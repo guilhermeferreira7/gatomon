@@ -8,8 +8,10 @@
 - Loja com alguns itens que se alternam de tempo em tempo
 - Página para ver estatisticas e um ranking de usuários
 
-## Protótipos 
-
+## Protótipos
+![](/assets/wireframes/index.jpg)
+![](/assets/wireframes/colecao.jpg)
+![](/assets/wireframes/perfil.jpg)
+![](/assets/wireframes/loja.jpg)
 
 ## Cronograma
-
