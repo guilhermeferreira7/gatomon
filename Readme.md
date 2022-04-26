@@ -9,7 +9,7 @@
 - Página para ver estatisticas e um ranking de usuários
 
 ## Protótipos
-![](/assets/wireframes/index.jpg)
+<img src="assets/wireframes/inicial.jpg" alt="inical" height="300"/>
 ![](/assets/wireframes/colecao.jpg)
 ![](/assets/wireframes/perfil.jpg)
 ![](/assets/wireframes/loja.jpg)
