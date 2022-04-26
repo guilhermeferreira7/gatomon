@@ -19,4 +19,4 @@
 <img src="assets/docs/interface-jogo.jpg" height="400"/>
 
 ## Cronograma
-<img src="assets/docs/cronograma.png" height="400"/>
+<img src="assets/docs/Cronograma.png" height="400"/>
