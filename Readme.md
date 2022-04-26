@@ -9,13 +9,14 @@
 - Página para ver estatisticas e um ranking de usuários
 
 ## Protótipos
-<img src="assets/wireframes/login.jpg" height="400"/>
-<img src="assets/wireframes/criar-conta.jpg" height="400"/>
-<img src="assets/wireframes/pagina-inicial.jpg" height="400"/>
-<img src="assets/wireframes/colecao.jpg" height="400"/>
-<img src="assets/wireframes/perfil.jpg" height="400"/>
-<img src="assets/wireframes/loja.jpg" height="400"/>
-<img src="assets/wireframes/ranking.jpg" height="400"/>
-<img src="assets/wireframes/interface-jogo.jpg" height="400"/>
+<img src="assets/docs/login.jpg" height="400"/>
+<img src="assets/docs/criar-conta.jpg" height="400"/>
+<img src="assets/docs/pagina-inicial.jpg" height="400"/>
+<img src="assets/docs/colecao.jpg" height="400"/>
+<img src="assets/docs/perfil.jpg" height="400"/>
+<img src="assets/docs/loja.jpg" height="400"/>
+<img src="assets/docs/ranking.jpg" height="400"/>
+<img src="assets/docs/interface-jogo.jpg" height="400"/>
 
 ## Cronograma
+<img src="assets/docs/cronograma.png" height="400"/>
