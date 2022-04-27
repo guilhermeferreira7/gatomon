@@ -1,10 +1,5 @@
-import { StyleSheet, Text, View } from 'react-native';
-import Home from '.src/pages/Home';
+import Routes from "./src/Routes";
 
 export default function App() {
-  return (
-    <View>
-      <Home />
-    </View>
-  );
+  return <Routes />
 }

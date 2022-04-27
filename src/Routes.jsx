@@ -8,21 +8,23 @@ import Login from "./pages/Login"
 import Ranking from "./pages/Ranking"
 import Store from "./pages/Store"
 import Collection from "./pages/Collection"
+import Header from "./components/Header"
 
-const Stack = createNativeStackNavigator
+const Stack = createNativeStackNavigator();
 
 export default function Routes() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="Account" component={Account}/>
         <Stack.Screen name="CreateAccount" component={CreateAccount}/>
         <Stack.Screen name="Game" component={Game}/>
-        <Stack.Screen name="Login" component={Login}/>
-        <Stack.Screen name="Ranking" component={Ranking}/>
+        <Stack.Screen name="Collection" component={Collection}/> 
         <Stack.Screen name="Store" component={Store}/>
-        <Stack.Screen name="Collection" component={Collection}/>
+        <Stack.Screen name="Ranking" component={Ranking}/>
+        <Stack.Screen name="Header" component={Header}/> 
       </Stack.Navigator>
     </NavigationContainer>
   )
