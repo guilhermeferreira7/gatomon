@@ -6,6 +6,8 @@ import {
   StyleSheet,
   Button
 } from 'react-native'
+
+import { useState } from 'react'
 // import axios from 'axios'
 import img1 from './1.png';
 import img2 from './2.png';
@@ -14,32 +16,47 @@ import img4 from './4.png';
 
 import Header from "../../components/Header"
 import { SafeAreaView } from 'react-native-safe-area-context';
-import apiData1 from "../../services/apiData.js"
+// import apiData from "../../services/apiData.js"
 
 export default function Collection({ navigation }) {
   // https://neko-atsume.emshea.com/
   // const fetch = () => { //axios.get('https://api.neko-atsume.emshea.com/cats')}
 
-  console.log(apiData1["_W"]);
+  const [cats, setCats] = useState()
+  const getData = async () => {
+    try {
+      const result = await api.get("https://api.neko-atsume.emshea.com/cats");
+      setCats(result.data)
+    } catch (err) {
+      console.error(err);
+    }
+  };
+  getData();
 
-  const apiData = [
-    {id: 5, img: img1, name: 'Snowball', power: '80', type: 'Comum'},
-    {id: 7, img: img2, name: 'Sapphire', power: '20', type: 'Raro'},
-    {id: 9, img: img3, name: 'Tabitha', power: '40', type: 'Comum'},
-    {id: 11, img: img4, name: 'Maple', power: '99', type: 'Comum'},
-  ]
+
+  // const cats = apiData
+  console.log('---');
+  console.log('---');
+  console.log('---');
+  console.log('---');
+  // console.log(cats[0]);
 
   const Card = ({ item }) => {
     return(
       <View style={styles.card}>
         <View style={styles.imageCard}>
-          <Image source={item.img} style={styles.imageSize}/>
+          <Image 
+            source={{
+              uri: item.CatImage,
+            }} 
+            style={styles.imageSize}
+          />
         </View>
 
         <View style={styles.textInfo}>
-          <Text>Nome: {item.name}</Text>
-          <Text>Poder: {item.power}</Text>
-          <Text>Raridade: {item.type}</Text>
+          <Text>Nome: {item.CatName}</Text>
+          <Text>Poder: {item.CatPowerLevel}</Text>
+          <Text>Raridade: {item.CatType == 'Rare' ? 'Raro' : 'Comum'}</Text>
         </View>
 
         <View style={styles.moreInfoBtn}>
@@ -53,13 +70,12 @@ export default function Collection({ navigation }) {
     <View>
       <Header />
       <SafeAreaView>
-        {/* {apiData1()} */}
-        {/* <FlatList
+        <FlatList
           style={styles.collectionList}
-          data={apiData}
+          data={cats}
           renderItem={Card}
-          keyExtractor={(item) => item.id}
-        /> */}
+          keyExtractor={(item) => item.catId}
+        />
       </SafeAreaView>
     </View>
   );
