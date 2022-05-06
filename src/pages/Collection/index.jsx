@@ -14,10 +14,14 @@ import img4 from './4.png';
 
 import Header from "../../components/Header"
 import { SafeAreaView } from 'react-native-safe-area-context';
+import apiData1 from "../../services/apiData.js"
 
 export default function Collection({ navigation }) {
   // https://neko-atsume.emshea.com/
   // const fetch = () => { //axios.get('https://api.neko-atsume.emshea.com/cats')}
+
+  console.log(apiData1["_W"]);
+
   const apiData = [
     {id: 5, img: img1, name: 'Snowball', power: '80', type: 'Comum'},
     {id: 7, img: img2, name: 'Sapphire', power: '20', type: 'Raro'},
@@ -49,12 +53,13 @@ export default function Collection({ navigation }) {
     <View>
       <Header />
       <SafeAreaView>
-        <FlatList
+        {/* {apiData1()} */}
+        {/* <FlatList
           style={styles.collectionList}
           data={apiData}
           renderItem={Card}
           keyExtractor={(item) => item.id}
-        />
+        /> */}
       </SafeAreaView>
     </View>
   );
