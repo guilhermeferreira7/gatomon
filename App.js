@@ -1,5 +1,16 @@
+import { SafeAreaView, StyleSheet } from "react-native";
 import Routes from "./src/Routes";
 
 export default function App() {
-  return <Routes />
+  return (
+    <SafeAreaView style={styles.container}>
+      <Routes />
+    </SafeAreaView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
