@@ -1,9 +1,10 @@
-import { Text, View } from 'react-native'
+import { Text, View } from "react-native";
+import Header from "src/components/Header";
 
 export default function CreateAccount({ navigation }) {
   return (
     <View>
-      <Text>Create account</Text>
+      <Header />
     </View>
-  )
+  );
 }

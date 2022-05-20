@@ -1,8 +1,8 @@
 import { Text, View, FlatList, StyleSheet, Image, Button } from "react-native";
 import { useState, useEffect } from "react";
-import api from "../../services/api.js";
-import Header from "../../components/Header/index.jsx";
-import colors from "../../../assets/colors/colors.js";
+import api from "src/services/api.js";
+import Header from "src/components/Header";
+import colors from "src/assets/colors";
 
 export default function Store({ navigation }) {
   const [cats, setCats] = useState([]);
@@ -51,6 +51,7 @@ export default function Store({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: colors.background,
   },
   flatList: {
     margin: 10,
