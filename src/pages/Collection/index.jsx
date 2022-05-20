@@ -1,10 +1,8 @@
 import { View, FlatList, Image, Text, StyleSheet, Button } from "react-native";
 
 import { useState, useEffect } from "react";
-// import axios from 'axios'
 
 import Header from "../../components/Header";
-import { SafeAreaView } from "react-native-safe-area-context";
 import api from "../../services/api.js";
 
 export default function Collection({ navigation }) {
