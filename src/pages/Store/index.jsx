@@ -7,8 +7,18 @@ import colors from "src/assets/colors";
 export default function Store({ navigation }) {
   const [cats, setCats] = useState([]);
 
+  const getRandomCat = (type) => {
+    const cat = {};
+    return cat;
+  };
+
   const loadCats = async () => {
     const res = await api.get("/cats");
+    // setCats([
+    //   getRandomCat("Common"),
+    //   getRandomCat("Rare"),
+    //   getRandomCat("Common"),
+    // ]);
     setCats(res.data);
   };
 
@@ -18,7 +28,7 @@ export default function Store({ navigation }) {
 
   const Card = ({ item }) => {
     return (
-      <View style={styles.card}>
+      <View style={[styles.card, item.CatType === "Rare" && styles.rareCard]}>
         <Image
           source={{
             uri: item.CatImage,
@@ -61,12 +71,15 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     flexBasis: 0,
     borderStyle: "solid",
-    borderColor: colors.darkBlue,
+    borderColor: colors.primary,
     borderWidth: 2,
-    borderRadius: 5,
-    backgroundColor: colors.lightBlue,
+    borderRadius: 10,
+    backgroundColor: colors.commonCard,
     margin: 10,
     padding: 5,
+  },
+  rareCard: {
+    backgroundColor: colors.rareCard,
   },
   image: {
     width: 114,
