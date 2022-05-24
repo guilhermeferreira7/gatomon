@@ -2,6 +2,7 @@ import { View, Button, TextInput, StyleSheet, Text } from "react-native";
 import React from "react";
 import Header from "src/components/Header";
 import colors from "src/assets/colors";
+import Footer from "src/components/Footer";
 
 export default function Login({ navigation }) {
   const homePage = () => {
@@ -30,6 +31,8 @@ export default function Login({ navigation }) {
         <Text>Não tem conta? </Text>
         <Button title="Cadastrar" onPress={createAccount} />
       </View>
+
+      <Footer />
     </View>
   );
 }

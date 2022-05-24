@@ -1,37 +1,17 @@
 import { View, StyleSheet, ScrollView, Button } from "react-native";
-import colors from "../../assets/colors";
-import Header from "../../components/Header";
+import colors from "src/assets/colors";
+import Header from "src/components/Header";
+import MyButton from "src/components/MyButton";
 
-export default function Home({ navigation }) {
-  //Extrair essas funcoes em uma só?
-  const collection = () => {
-    navigation.navigate("Collection");
-  };
-
-  const play = () => {
-    navigation.navigate("Game");
-  };
-
-  const store = () => {
-    navigation.navigate("Store");
-  };
-
-  const ranking = () => {
-    navigation.navigate("Ranking");
-  };
-
+export default function Home() {
   return (
     <ScrollView style={styles.container}>
       <Header />
 
-      <View style={styles.buttonStyle}>
-        <Button title="Jogar" onPress={play} />
-      </View>
-      <View style={styles.buttonStyle}>
-        <Button title="Coleção" onPress={collection} />
-      </View>
-      <Button color={colors.button} title="Loja" onPress={store} />
-      <Button style={styles.buttonStyle} title="Ranking" onPress={ranking} />
+      <MyButton title="Jogar" action="Game" />
+      <MyButton title="Coleção" action="Collection" />
+      <MyButton title="Loja" action="Store" />
+      <MyButton title="Ranking" action="Ranking" />
     </ScrollView>
   );
 }
@@ -39,11 +19,5 @@ export default function Home({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
-  },
-  buttonStyle: {
-    // width: "40%",
-    // marginTop: 10,
-    // alignSelf: "center",
-    color: colors.button,
   },
 });

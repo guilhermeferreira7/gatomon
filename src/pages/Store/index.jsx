@@ -4,7 +4,7 @@ import api from "src/services/api.js";
 import Header from "src/components/Header";
 import colors from "src/assets/colors";
 
-export default function Store({ navigation }) {
+export default function Store() {
   const [cats, setCats] = useState([]);
 
   const getRandomCat = (type) => {
