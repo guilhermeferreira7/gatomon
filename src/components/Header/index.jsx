@@ -7,8 +7,8 @@ import {
 } from "react-native";
 import React from "react";
 import colors from "src/assets/colors";
-import profileIcon from "./profileIcon.png";
 import { useNavigation } from "@react-navigation/native";
+import { FontAwesome } from "@expo/vector-icons";
 
 export default function Header() {
   const navigation = useNavigation();
@@ -19,8 +19,8 @@ export default function Header() {
     <View style={styles.container}>
       <Text style={styles.text}>Gatomon</Text>
 
-      <TouchableHighlight onPress={handleProfile}>
-        <Image source={profileIcon} />
+      <TouchableHighlight style={styles.icon} onPress={handleProfile}>
+        <FontAwesome name="user-circle-o" size={60} color={colors.primary} />
       </TouchableHighlight>
     </View>
   );
@@ -39,6 +39,12 @@ const styles = StyleSheet.create({
     textTransform: "uppercase",
     alignSelf: "center",
     flex: 1,
-    color: "white",
+    color: colors.primary,
+  },
+  icon: {
+    // padding: 10,
+    // borderWidth: 2,
+    // borderColor: colors.primary,
+    // borderRadius: 10,
   },
 });

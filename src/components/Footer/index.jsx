@@ -10,10 +10,10 @@ export default function Footer() {
   return (
     <View style={styles.container}>
       <View style={styles.apiLink}>
-        <Text>API data from </Text>
+        <Text style={styles.text}>API data from </Text>
         {/* <TouchableOpacity onPress={openUrl("https://neko-atsume.emshea.com")}> */}
         <TouchableOpacity>
-          <Text>https://neko-atsume.emshea.com</Text>
+          <Text style={styles.text}>https://neko-atsume.emshea.com</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -29,5 +29,8 @@ const styles = StyleSheet.create({
   },
   apiLink: {
     flexDirection: "row",
+  },
+  text: {
+    fontStyle: "italic",
   },
 });

@@ -2,6 +2,8 @@ import { Text, View, FlatList, StyleSheet, Image, Button } from "react-native";
 import { useState, useEffect } from "react";
 import api from "src/services/api.js";
 import Header from "src/components/Header";
+import Footer from "src/components/Footer";
+import GameInfo from "src/components/GameInfo";
 import colors from "src/assets/colors";
 
 export default function Store() {
@@ -47,6 +49,8 @@ export default function Store() {
   return (
     <View style={styles.container}>
       <Header />
+      <GameInfo />
+
       <FlatList
         style={styles.flatList}
         numColumns={2}
@@ -54,6 +58,10 @@ export default function Store() {
         renderItem={Card}
         keyExtractor={(item, index) => index}
       />
+
+      <View style={styles.footer}>
+        <Footer />
+      </View>
     </View>
   );
 }
@@ -64,6 +72,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   flatList: {
+    flex: 0.9,
     margin: 10,
   },
   card: {
@@ -85,5 +94,8 @@ const styles = StyleSheet.create({
     width: 114,
     height: 80,
     marginBottom: 5,
+  },
+  footer: {
+    flex: 0.1,
   },
 });
