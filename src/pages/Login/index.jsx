@@ -2,10 +2,10 @@ import { View, TextInput, StyleSheet, Text, Image } from "react-native";
 import React from "react";
 import colors from "src/assets/colors";
 import Footer from "src/components/Footer";
-import NavBtn from "src/components/NavBtn";
+import AppButton from "src/components/AppButton";
 import catImg from "./Hermeowne.jpg";
 
-export default function Login() {
+export default function Login({ navigation }) {
   const LoginHeader = () => {
     return (
       <View style={styles.headerContainer}>
@@ -20,19 +20,22 @@ export default function Login() {
       <LoginHeader />
 
       <View style={styles.textInput}>
-        <TextInput style={styles.placeholder} placeholder="Nome de usuário" />
+        <TextInput style={styles.placeholder} placeholder="Email" />
       </View>
       <View style={styles.textInput}>
         <TextInput style={styles.placeholder} placeholder="Senha" />
       </View>
       <View style={styles.inputs}>
-        <NavBtn title="Login" route="Home" />
+        <AppButton onPress={() => navigation.navigate("Home")} title="Login" />
       </View>
 
       <View style={styles.register}>
         <Text style={styles.text}>Não tem conta? </Text>
         <View style={styles.inputs}>
-          <NavBtn title="Cadastrar" route="CreateAccount" />
+          <AppButton
+            onPress={() => navigation.navigate("CreateAccount")}
+            title="Cadastrar"
+          />
         </View>
       </View>
 

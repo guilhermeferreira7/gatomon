@@ -2,10 +2,10 @@ import { View, StyleSheet, ScrollView, Button } from "react-native";
 import colors from "src/assets/colors";
 import Header from "src/components/Header";
 import Footer from "src/components/Footer";
-import NavBtn from "src/components/NavBtn";
+import AppButton from "src/components/AppButton";
 import GameInfo from "src/components/GameInfo";
 
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
       <Header />
@@ -14,16 +14,28 @@ export default function Home() {
 
       <View style={styles.btnList}>
         <View style={styles.btn}>
-          <NavBtn title="Jogar" route="Game" />
+          <AppButton
+            onPress={() => navigation.navigate("Game")}
+            title="Jogar"
+          />
         </View>
         <View style={styles.btn}>
-          <NavBtn title="Coleção" route="Collection" />
+          <AppButton
+            onPress={() => navigation.navigate("Collection")}
+            title="Coleção"
+          />
         </View>
         <View style={styles.btn}>
-          <NavBtn title="Loja" route="Store" />
+          <AppButton
+            onPress={() => navigation.navigate("Store")}
+            title="Loja"
+          />
         </View>
         <View style={styles.btn}>
-          <NavBtn title="Ranking" route="Ranking" />
+          <AppButton
+            onPress={() => navigation.navigate("Ranking")}
+            title="Ranking"
+          />
         </View>
       </View>
 

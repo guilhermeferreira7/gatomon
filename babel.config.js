@@ -12,6 +12,7 @@ module.exports = function (api) {
             assets: ".src/assets",
             components: "./src/components",
             services: "./src/services",
+            firebase: "./src/firebase",
           },
         },
       ],
