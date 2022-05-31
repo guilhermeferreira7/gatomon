@@ -1,11 +1,39 @@
 import { View, TextInput, StyleSheet, Text, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+
 import colors from "src/assets/colors";
+
 import Footer from "src/components/Footer";
 import AppButton from "src/components/AppButton";
+
 import catImg from "./Hermeowne.jpg";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 export default function Login({ navigation }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    console.log(email);
+    console.log(password);
+
+    const user = {
+      email,
+      password,
+    };
+
+    AsyncStorage.setItem("login", JSON.stringify(user))
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+
+    navigation.navigate("Home");
+  };
+
   const LoginHeader = () => {
     return (
       <View style={styles.headerContainer}>
@@ -20,13 +48,25 @@ export default function Login({ navigation }) {
       <LoginHeader />
 
       <View style={styles.textInput}>
-        <TextInput style={styles.placeholder} placeholder="Email" />
+        <TextInput
+          style={styles.placeholder}
+          placeholder="Email"
+          onChangeText={(text) => {
+            setEmail(text);
+          }}
+        />
       </View>
       <View style={styles.textInput}>
-        <TextInput style={styles.placeholder} placeholder="Senha" />
+        <TextInput
+          style={styles.placeholder}
+          placeholder="Senha"
+          onChangeText={(text) => {
+            setPassword(text);
+          }}
+        />
       </View>
       <View style={styles.inputs}>
-        <AppButton onPress={() => navigation.navigate("Home")} title="Login" />
+        <AppButton onPress={handleLogin} title="Login" />
       </View>
 
       <View style={styles.register}>

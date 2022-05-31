@@ -18,28 +18,7 @@ export default function Collection() {
   }, []);
 
   const Card = ({ item }) => {
-    return (
-      <View style={styles.card}>
-        <View style={styles.imageCard}>
-          <Image
-            source={{
-              uri: item.CatImage,
-            }}
-            style={styles.imageSize}
-          />
-        </View>
-
-        <View style={styles.textInfo}>
-          <Text>Nome: {item.CatName}</Text>
-          <Text>Poder: {item.CatPowerLevel}</Text>
-          <Text>Raridade: {item.CatType == "Rare" ? "Raro" : "Comum"}</Text>
-        </View>
-
-        <View style={styles.moreInfoBtn}>
-          <Button title="Mais informações" />
-        </View>
-      </View>
-    );
+    return <View style={styles.card}></View>;
   };
 
   return (

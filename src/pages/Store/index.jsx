@@ -1,13 +1,29 @@
-import { Text, View, FlatList, StyleSheet, Image, Button } from "react-native";
+import {
+  Text,
+  View,
+  FlatList,
+  StyleSheet,
+  Image,
+  Alert,
+  Button,
+} from "react-native";
 import { useState, useEffect } from "react";
 import api from "src/services/api.js";
 import Footer from "src/components/Footer";
 import GameInfo from "src/components/GameInfo";
 import AppButton from "src/components/AppButton";
 import colors from "src/assets/colors";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Store() {
   const [cats, setCats] = useState([]);
+  const [user, setUser] = useState({});
+
+  const getLogin = async () => {
+    setUser(await AsyncStorage.getItem("login"));
+  };
+
+  console.log(user);
 
   const loadCats = async () => {
     let cats = [];
@@ -27,10 +43,30 @@ export default function Store() {
   };
 
   useEffect(() => {
+    getLogin();
     loadCats();
   }, []);
 
   const Card = ({ item }) => {
+    const value = item.CatType == "Rare" ? 1000 : 300;
+
+    const buy = () => {
+      console.log("bought");
+    };
+
+    const handleBuy = () => {
+      Alert.alert(
+        "Confirmar",
+        `Quer mesmo comprar a carta ${item.CatName} por $ ${value}`,
+        [
+          {
+            text: "Não",
+          },
+          { text: "Sim", onPress: buy },
+        ]
+      );
+    };
+
     return (
       <View style={[styles.card, item.CatType === "Rare" && styles.rareCard]}>
         <Image
@@ -43,8 +79,8 @@ export default function Store() {
           {item.CatName} {item.CatPowerLevel}
         </Text>
         <Text>{item.CatType == "Rare" ? "Raro" : "Comum"}</Text>
-        <Text>Valor: {item.CatType == "Rare" ? "1000" : "300"}</Text>
-        <AppButton title="Comprar" />
+        <Text>Valor: {value}</Text>
+        <AppButton title="Comprar" onPress={handleBuy} />
       </View>
     );
   };
