@@ -1,27 +1,29 @@
 import { Text, View, FlatList, StyleSheet, Image, Button } from "react-native";
 import { useState, useEffect } from "react";
 import api from "src/services/api.js";
-import Header from "src/components/Header";
 import Footer from "src/components/Footer";
 import GameInfo from "src/components/GameInfo";
+import AppButton from "src/components/AppButton";
 import colors from "src/assets/colors";
 
 export default function Store() {
   const [cats, setCats] = useState([]);
 
-  const getRandomCat = (type) => {
-    const cat = {};
-    return cat;
-  };
-
   const loadCats = async () => {
-    const res = await api.get("/cats");
-    // setCats([
-    //   getRandomCat("Common"),
-    //   getRandomCat("Rare"),
-    //   getRandomCat("Common"),
-    // ]);
-    setCats(res.data);
+    let cats = [];
+    let invalidNumbers = [];
+    for (let i = 0; i < 4; i++) {
+      let random = Math.round(Math.random() * 65 + 1);
+
+      if (!invalidNumbers.includes(random)) {
+        let cat = await api.get(`/cats/${random}`);
+        cats.push(cat.data);
+      } else {
+        i--;
+      }
+    }
+
+    setCats(cats);
   };
 
   useEffect(() => {
@@ -37,19 +39,23 @@ export default function Store() {
           }}
           style={styles.image}
         />
-        <Text>{item.CatName}</Text>
-        <Text>{item.CatPowerLevel}</Text>
-        <Text>Valor: {item.CatType == "Rare" ? "1000" : "300"}</Text>
+        <Text>
+          {item.CatName} {item.CatPowerLevel}
+        </Text>
         <Text>{item.CatType == "Rare" ? "Raro" : "Comum"}</Text>
-        <Button title="Comprar" />
+        <Text>Valor: {item.CatType == "Rare" ? "1000" : "300"}</Text>
+        <AppButton title="Comprar" />
       </View>
     );
   };
 
   return (
     <View style={styles.container}>
-      <Header />
       <GameInfo />
+
+      <View>
+        <Text style={styles.text}>Próxima atualização em 3h 20m 10s</Text>
+      </View>
 
       <FlatList
         style={styles.flatList}
@@ -97,5 +103,9 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 0.1,
+  },
+  text: {
+    alignSelf: "center",
+    fontSize: 16,
   },
 });
