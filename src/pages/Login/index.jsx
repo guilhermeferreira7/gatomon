@@ -21,6 +21,7 @@ export default function Login({ navigation }) {
     const user = {
       email,
       password,
+      cards: [],
     };
 
     AsyncStorage.setItem("login", JSON.stringify(user))
