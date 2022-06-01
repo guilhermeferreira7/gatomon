@@ -1,9 +1,11 @@
 import { TextInput, View, StyleSheet } from "react-native";
 import { useState } from "react";
-import Header from "src/components/Header";
-import colors from "src/assets/colors";
-import Footer from "src/components/Footer";
-import AppButton from "src/components/AppButton";
+import Header from "../../components/Header";
+import colors from "../../assets/colors";
+import Footer from "../../components/Footer";
+import AppButton from "../../components/AppButton";
+
+import createUser from "../../firebase/hooks/createUser";
 
 export default function CreateAccount({ navigation }) {
   const [name, setName] = useState("");
@@ -11,14 +13,8 @@ export default function CreateAccount({ navigation }) {
   const [password, setPassword] = useState("");
 
   const handleCreateAccount = () => {
-    // const user = {
-    //   name: "",
-    //   email: "",
-    //   password: "",
-    // };
-    // console.log(name);
-    // console.log(email);
-    // console.log(password);
+    createUser(email, password, name);
+    navigation.navigate("Login");
   };
 
   return (

@@ -1,11 +1,16 @@
-import { View, StyleSheet, ScrollView, Button } from "react-native";
-import colors from "src/assets/colors";
-import Header from "src/components/Header";
-import Footer from "src/components/Footer";
-import AppButton from "src/components/AppButton";
-import GameInfo from "src/components/GameInfo";
+import { View, StyleSheet, Text } from "react-native";
+import colors from "../../assets/colors";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import AppButton from "../../components/AppButton";
+import GameInfo from "../../components/GameInfo";
+
+import useAuth from "../../firebase/hooks/useAuth";
 
 export default function Home({ navigation }) {
+  const { user, login, logout } = useAuth();
+  console.log(user);
+
   return (
     <View style={styles.container}>
       <Header />

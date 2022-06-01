@@ -1,13 +1,13 @@
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StyleSheet, Text } from "react-native";
 import Routes from "./src/Routes";
 
-// import firebaseConfig from "./src/firebase/config/firebaseConfig";
-// import useFirebase from "./src/firebase/hooks/useFirebase";
+import firebaseConfig from "./src/firebase/config/firebaseConfig";
+import useFirebase from "./src/firebase/hooks/useFirebase";
 
 export default function App() {
-  // const firebaseApp = useFirebase(firebaseConfig);
+  const firebaseApp = useFirebase(firebaseConfig);
 
-  // if (!firebaseApp) return <Text>Loading...</Text>;
+  if (!firebaseApp) return <Text>Loading...</Text>;
   return (
     <SafeAreaView style={styles.container}>
       <Routes />

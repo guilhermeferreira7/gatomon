@@ -1,36 +1,24 @@
 import { View, TextInput, StyleSheet, Text, Image } from "react-native";
 import React, { useState } from "react";
 
-import colors from "src/assets/colors";
+import useAuth from "../../firebase/hooks/useAuth";
 
-import Footer from "src/components/Footer";
-import AppButton from "src/components/AppButton";
+import colors from "../../assets/colors";
+
+import Footer from "../../components/Footer";
+import AppButton from "../../components/AppButton";
 
 import catImg from "./Hermeowne.jpg";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Login({ navigation }) {
+  const { user, login, logout } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    console.log(email);
-    console.log(password);
-
-    const user = {
-      email,
-      password,
-      cards: [],
-    };
-
-    AsyncStorage.setItem("login", JSON.stringify(user))
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    login(email, password);
 
     navigation.navigate("Home");
   };

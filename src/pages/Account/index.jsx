@@ -1,7 +1,7 @@
 import { Text, View, StyleSheet } from "react-native";
-import Header from "src/components/Header";
-import Footer from "src/components/Footer";
-import colors from "src/assets/colors";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+import colors from "../../assets/colors";
 
 export default function Account() {
   return (

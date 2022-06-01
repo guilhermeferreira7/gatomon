@@ -1,13 +1,13 @@
 import { Text, View, FlatList, StyleSheet, Image, Alert } from "react-native";
 import { useState, useEffect } from "react";
 
-import api from "src/services/api.js";
+import api from "../../services/api";
 
-import colors from "src/assets/colors";
+import colors from "../../assets/colors";
 
-import Footer from "src/components/Footer";
-import GameInfo from "src/components/GameInfo";
-import AppButton from "src/components/AppButton";
+import Footer from "../../components/Footer";
+import GameInfo from "../../components/GameInfo";
+import AppButton from "../../components/AppButton";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

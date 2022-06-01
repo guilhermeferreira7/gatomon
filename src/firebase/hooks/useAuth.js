@@ -11,7 +11,9 @@ export default function useAuth() {
   const [user, setUser] = useState(null);
 
   const login = (email, password) => {
-    signInWithEmailAndPassword(getAuth(), email, password);
+    signInWithEmailAndPassword(getAuth(), email, password).catch((err) => {
+      console.log("usuario nao existe");
+    });
   };
 
   const logout = () => {
