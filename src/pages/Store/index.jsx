@@ -1,5 +1,5 @@
-import { Text, View, FlatList, StyleSheet, Image, Alert } from "react-native";
 import { useState, useEffect } from "react";
+import { Text, View, FlatList, StyleSheet, Image, Alert } from "react-native";
 
 import api from "../../services/api";
 
@@ -9,15 +9,8 @@ import Footer from "../../components/Footer";
 import GameInfo from "../../components/GameInfo";
 import AppButton from "../../components/AppButton";
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
-
 export default function Store() {
   const [cats, setCats] = useState([]);
-  const [user, setUser] = useState({});
-
-  const getLogin = async () => {
-    setUser(JSON.parse(await AsyncStorage.getItem("login")));
-  };
 
   const loadCats = async () => {
     let cats = [];
@@ -38,7 +31,6 @@ export default function Store() {
 
   useEffect(() => {
     let isMounted = true;
-    getLogin();
     loadCats();
   }, []);
 
@@ -46,8 +38,6 @@ export default function Store() {
     const value = item.CatType == "Rare" ? 1000 : 300;
 
     const buy = () => {
-      user.cards.push(item);
-      console.log(user);
       console.log("bought");
     };
 

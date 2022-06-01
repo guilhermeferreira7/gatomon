@@ -1,26 +1,40 @@
-import { View, TextInput, StyleSheet, Text, Image } from "react-native";
 import React, { useState } from "react";
+import { View, TextInput, StyleSheet, Text, Image, Alert } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import useAuth from "../../firebase/hooks/useAuth";
-
+import catImg from "./Hermeowne.jpg";
 import colors from "../../assets/colors";
 
 import Footer from "../../components/Footer";
 import AppButton from "../../components/AppButton";
 
-import catImg from "./Hermeowne.jpg";
-
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import useAuth from "../../firebase/hooks/useAuth";
 
 export default function Login({ navigation }) {
-  const { user, login, logout } = useAuth();
+  const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    login(email, password);
+  // useEffect(() => {
+  //   (async () => {
+  //     console.log(JSON.parse(await AsyncStorage.getItem("login")));
+  //   })();
+  // }, []);
 
-    navigation.navigate("Home");
+  const handleLogin = () => {
+    let isMounted = true;
+    login(email, password)
+      .then((res) => {
+        AsyncStorage.setItem("login", JSON.stringify(res.user));
+        navigation.navigate("Home");
+      })
+      .catch(() => {
+        Alert.alert("Erro", "Login ou senha invalida", [
+          {
+            text: "Ok",
+          },
+        ]);
+      });
   };
 
   const LoginHeader = () => {

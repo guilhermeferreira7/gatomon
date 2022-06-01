@@ -10,10 +10,8 @@ import {
 export default function useAuth() {
   const [user, setUser] = useState(null);
 
-  const login = (email, password) => {
-    signInWithEmailAndPassword(getAuth(), email, password).catch((err) => {
-      console.log("usuario nao existe");
-    });
+  const login = async (email, password) => {
+    return await signInWithEmailAndPassword(getAuth(), email, password);
   };
 
   const logout = () => {

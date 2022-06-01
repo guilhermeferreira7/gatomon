@@ -1,7 +1,11 @@
-import { TextInput, View, StyleSheet } from "react-native";
 import { useState } from "react";
-import Header from "../../components/Header";
+import { TextInput, View, StyleSheet, Alert } from "react-native";
+
+import { updateProfile } from "firebase/auth";
+
 import colors from "../../assets/colors";
+
+import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import AppButton from "../../components/AppButton";
 
@@ -13,8 +17,18 @@ export default function CreateAccount({ navigation }) {
   const [password, setPassword] = useState("");
 
   const handleCreateAccount = () => {
-    createUser(email, password, name);
-    navigation.navigate("Login");
+    createUser(email, password, name)
+      .then((res) => {
+        updateProfile(res.user, { displayName: name });
+        navigation.navigate("Login");
+      })
+      .catch(() => {
+        Alert.alert("Email invalido ou já cadastrado", "Tente novamente", [
+          {
+            text: "Ok",
+          },
+        ]);
+      });
   };
 
   return (
