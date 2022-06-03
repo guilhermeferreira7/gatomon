@@ -28,10 +28,10 @@ Pretendo criar algum jogo muito simples para conseguir coletar moedas para o apl
 
 ### [1 ponto] Cronograma:
 
-Até 06/06: Terminar as funcionalidades para criar e editar usuários
-Até 13/06: Funcionalidades para comprar cards, listar cards comprados de cada usuário, funcionalidade de mostrar mais informações de cada card
-Até 20/06: Funcionalidade de ranking
-Até 27/06: Se possível, fazer a funcionalidade do jogo, se não, implementar outras funcionalidades e polir mais o que já está implementado.
+- Até 06/06: Terminar as funcionalidades para criar e editar usuários
+- Até 13/06: Funcionalidades para comprar cards, listar cards comprados de cada usuário, funcionalidade de mostrar mais informações de cada card
+- Até 20/06: Funcionalidade de ranking
+- Até 27/06: Se possível, fazer a funcionalidade do jogo, se não, implementar outras funcionalidades e polir mais o que já está implementado.
 
 ## Funcionalidades
 
