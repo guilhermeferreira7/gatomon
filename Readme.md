@@ -2,31 +2,31 @@
 
 ## AA2
 
-### [2 pontos] Correções da AA1:
+### Correções da AA1:
 
 AA1 já estava ok
 
-### [2 pontos] Persistência de Dados:
+### Persistência de Dados:
 
 Firebase nas paginas de Login e Criar conta. AsyncStorage para armazenar os dados de login e são excluidos quando o usuário faz logout.
 
-### [1 ponto] Alert, Modal e ActionSheet:
+### Alert, Modal e ActionSheet:
 
 Alert na pagina de login e criar conta para informar que alguma coisa está incorreta. Alert também na pagina de comprar cards.
 
-### [2 pontos] Backlog:
+### Backlog:
 
 As páginas de login e criar conta agora funcionam corretamente. É possível criar uma conta no firebase e só é possível efetuar login se já existir uma conta. A tela da loja mostra somente algumas cards aleatóriamente e não todas. Na página do perfil de usuário (que é acessado quando clica no icone no canto superior direito), mostra um botão para logout.
 
-### [1 ponto] Acesso à API Remota:
+### Acesso à API Remota:
 
 Os cards são gerados a partir de uma api https://neko-atsume.emshea.com
 
-### [1 ponto] Recurso inédito:
+### Recurso inédito:
 
 Pretendo criar algum jogo muito simples para conseguir coletar moedas para o aplicativo fazer mais sentido.
 
-### [1 ponto] Cronograma:
+### Cronograma:
 
 - Até 06/06: Terminar as funcionalidades para criar e editar usuários
 - Até 13/06: Funcionalidades para comprar cards, listar cards comprados de cada usuário, funcionalidade de mostrar mais informações de cada card
@@ -40,7 +40,6 @@ Pretendo criar algum jogo muito simples para conseguir coletar moedas para o apl
 - Listar coleção
 - Forma de adquirir moeda virtual
 - Loja com alguns itens que se alternam de tempo em tempo
-- Página para ver estatisticas
 - Página com ranking
 
 ## Protótipos
@@ -76,7 +75,3 @@ Pretendo criar algum jogo muito simples para conseguir coletar moedas para o apl
 ### Interface de jogo
 
 <img src="docs/interface-jogo.jpg" height="400"/>
-
-## Cronograma
-
-<img src="docs/cronograma.png" height="400"/>
