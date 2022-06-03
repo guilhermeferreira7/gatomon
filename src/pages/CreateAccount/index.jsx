@@ -17,7 +17,7 @@ export default function CreateAccount({ navigation }) {
   const [password, setPassword] = useState("");
 
   const handleCreateAccount = () => {
-    createUser(email, password, name)
+    createUser(email, password)
       .then((res) => {
         updateProfile(res.user, { displayName: name });
         navigation.navigate("Login");

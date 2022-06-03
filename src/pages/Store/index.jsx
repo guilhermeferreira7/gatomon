@@ -14,16 +14,10 @@ export default function Store() {
 
   const loadCats = async () => {
     let cats = [];
-    let invalidNumbers = [];
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 8; i++) {
       let random = Math.round(Math.random() * 65 + 1);
-
-      if (!invalidNumbers.includes(random)) {
-        let cat = await api.get(`/cats/${random}`);
-        cats.push(cat.data);
-      } else {
-        i--;
-      }
+      let cat = await api.get(`/cats/${random}`);
+      cats.push(cat.data);
     }
 
     setCats(cats);

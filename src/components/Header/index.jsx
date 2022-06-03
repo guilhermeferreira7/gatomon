@@ -19,7 +19,7 @@ export default function Header() {
     <View style={styles.container}>
       <Text style={styles.text}>Gatomon</Text>
 
-      <TouchableHighlight style={styles.icon} onPress={handleProfile}>
+      <TouchableHighlight onPress={handleProfile}>
         <FontAwesome name="user-circle-o" size={60} color={colors.primary} />
       </TouchableHighlight>
     </View>
@@ -40,11 +40,5 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     flex: 1,
     color: colors.primary,
-  },
-  icon: {
-    // padding: 10,
-    // borderWidth: 2,
-    // borderColor: colors.primary,
-    // borderRadius: 10,
   },
 });
