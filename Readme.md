@@ -1,5 +1,18 @@
 # Gatomon
 
+## Do que se trata o aplicativo
+
+- Está sendo desenvolvido para a disciplina de Programação de Dispositivos Móveis usando React Native junto com Expo.
+- Gatomon surgiu da ideia de ser um app para colecionar/gerenciar cartas. Os dados das cartas são de um jogo de colecionar gatinhos chamado Neko Atsume (https://www.nekoatsume.com/en/). Os dados estão em uma API (https://neko-atsume.emshea.com/) que foi criado pela Emily Shea (https://emshea.com/).
+- Principais funcionalidades (nem todas foram implementas ainda):
+  - Criar usuários e salvar os dados no Firebase
+  - Validação de login
+  - Loja de cartas
+  - Tela de listagem de cartas
+  - Tela para mostrar e editar informações do usuário
+  - Tela com ranking de usuários (por quantidade de cartas e por poder total)
+  - Tela principal com algumas informações do usuário e botões para navegação
+
 ## AA2
 
 ### Correções da AA1:
@@ -16,7 +29,10 @@ Alert na pagina de login e criar conta para informar que alguma coisa está inco
 
 ### Backlog:
 
-As páginas de login e criar conta agora funcionam corretamente. É possível criar uma conta no firebase e só é possível efetuar login se já existir uma conta. A tela da loja mostra somente algumas cards aleatóriamente e não todas. Na página do perfil de usuário (que é acessado quando clica no icone no canto superior direito), mostra um botão para logout.
+- As páginas de login e criar conta agora funcionam corretamente.
+- É possível criar uma conta no firebase e só é possível efetuar login se já existir uma conta.
+- A tela da loja mostra somente algumas cards aleatóriamente e não todas.
+- Na página do perfil de usuário (que é acessado quando clica no icone no canto superior direito), mostra um botão para logout.
 
 ### Acesso à API Remota:
 
@@ -33,45 +49,51 @@ Pretendo criar algum jogo muito simples para conseguir coletar moedas para o apl
 - Até 20/06: Funcionalidade de ranking
 - Até 27/06: Se possível, fazer a funcionalidade do jogo, se não, implementar outras funcionalidades e polir mais o que já está implementado.
 
-## Funcionalidades
+## To do
 
-- Login
-- Criar/editar conta para diferentes usuários
-- Listar coleção
-- Forma de adquirir moeda virtual
-- Loja com alguns itens que se alternam de tempo em tempo
-- Página com ranking
+- [x] Login
+- [x] Criar/editar conta para diferentes usuários
+- [ ] Editar usuário
+- [ ] Adicionar e mudar foto de perfil dos usuários
+- [ ] Listar coleção
+- [x] Acesso a API
+- [ ] Forma de adquirir moeda virtual
+- [x] Loja com alguns itens aleatórios da API
+- [ ] Mudar itens da loja de tempos em tempos
+- [ ] Página com ranking
 
-## Protótipos
+## AA 1
 
-### Página de login
+### Protótipos
+
+#### Página de login
 
 <img src="docs/login.jpg" height="400"/>
 
-### Página de cadastro
+#### Página de cadastro
 
 <img src="docs/criar-conta.jpg" height="400"/>
 
-### Página inicial
+#### Página inicial
 
 <img src="docs/pagina-inicial.jpg" height="400"/>
 
-### Listagem da coleção
+#### Listagem da coleção
 
 <img src="docs/colecao.jpg" height="400"/>
 
-### Informações do perfil
+#### Informações do perfil
 
 <img src="docs/perfil.jpg" height="400"/>
 
-### Loja
+#### Loja
 
 <img src="docs/loja.jpg" height="400"/>
 
-### Ranking
+#### Ranking
 
 <img src="docs/ranking.jpg" height="400"/>
 
-### Interface de jogo
+#### Interface de jogo
 
 <img src="docs/interface-jogo.jpg" height="400"/>
