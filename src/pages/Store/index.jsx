@@ -14,10 +14,18 @@ export default function Store() {
 
   const loadCats = async () => {
     let cats = [];
+    let tempNums = [];
     for (let i = 0; i < 8; i++) {
       let random = Math.round(Math.random() * 65 + 1);
       let cat = await api.get(`/cats/${random}`);
-      cats.push(cat.data);
+      if (!tempNums.includes(random)) {
+        tempNums.push(random);
+        cats.push(cat.data);
+      } else {
+        console.log(random);
+        console.log(tempNums);
+        i--;
+      }
     }
 
     setCats(cats);

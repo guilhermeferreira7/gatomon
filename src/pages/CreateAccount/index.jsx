@@ -9,7 +9,8 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import AppButton from "../../components/AppButton";
 
-import createUser from "../../firebase/hooks/createUser";
+import { createUser } from "../../firebase/services/userSettings";
+import formatFirebaseError from "../../firebase/services/formatFirebaseError";
 
 export default function CreateAccount({ navigation }) {
   const [name, setName] = useState("");
@@ -22,8 +23,10 @@ export default function CreateAccount({ navigation }) {
         updateProfile(res.user, { displayName: name });
         navigation.navigate("Login");
       })
-      .catch(() => {
-        Alert.alert("Email invalido ou já cadastrado", "Tente novamente", [
+      .catch((error) => {
+        let errorMessage = formatFirebaseError(error.code);
+
+        Alert.alert("Erro ao criar a conta", errorMessage, [
           {
             text: "Ok",
           },

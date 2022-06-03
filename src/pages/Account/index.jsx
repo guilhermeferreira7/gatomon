@@ -13,7 +13,6 @@ export default function Account({ navigation }) {
   const { logout } = useAuth();
 
   const handleLogout = () => {
-    let isMounted = true;
     logout();
     AsyncStorage.removeItem("login");
     navigation.navigate("Login");
