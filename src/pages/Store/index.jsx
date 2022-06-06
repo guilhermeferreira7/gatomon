@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Text, View, FlatList, StyleSheet, Image, Alert } from "react-native";
 
-import api from "../../services/api";
 import getUserLogin from "../../services/getUserLogin";
+import loadCats from "../../services/loadCats";
 
 import colors from "../../assets/colors";
 
@@ -17,26 +17,13 @@ export default function Store() {
   const [uid, setUid] = useState("");
   const cards = useList(uid + "/cards/");
 
-  const loadCats = async () => {
-    let cats = [];
-    let tempNums = [];
-    for (let i = 0; i < 8; i++) {
-      let random = Math.round(Math.random() * 65 + 1);
-      let cat = await api.get(`/cats/${random}`);
-      if (!tempNums.includes(random)) {
-        tempNums.push(random);
-        cats.push(cat.data);
-      } else {
-        i--;
-      }
-    }
-
-    setCats(cats);
+  const getCats = async () => {
+    setCats(await loadCats());
   };
 
   useEffect(() => {
     let isMounted = true;
-    loadCats();
+    getCats();
     getUserLogin().then((res) => {
       setUid(res.uid);
     });
