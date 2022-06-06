@@ -1,4 +1,5 @@
-import { View, StyleSheet } from "react-native";
+import { useState, useEffect } from "react";
+import { View, StyleSheet, Text, FlatList } from "react-native";
 
 import Header from "../../components/Header";
 
@@ -7,20 +8,41 @@ import useList from "../../firebase/hooks/useList";
 import colors from "../../assets/colors";
 
 export default function Collection() {
+  const cards = useList(uid + "/cards/");
+  console.log("--");
+  console.log(cards);
   const [uid, setUid] = useState("");
-  const cards = useList(`${uid}/cards/`);
-  console.log(uid);
-  console.log(cards.data);
+  const [cats, setCats] = useState([]);
+
+  const loadCats = () => {
+    setCats(cards.data);
+  };
 
   useEffect(() => {
     getUserLogin().then((res) => {
       setUid(res.uid);
     });
+    loadCats();
   }, []);
+
+  const Card = ({ item }) => {
+    return (
+      <View>
+        <Text>{item.CatName}</Text>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
       <Header />
+
+      <FlatList
+        numColumns={2}
+        data={cats}
+        renderItem={Card}
+        keyExtractor={(item, index) => index}
+      />
     </View>
   );
 }
@@ -29,25 +51,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-  },
-  collectionList: {
-    margin: 10,
-  },
-  card: {
-    flexDirection: "row",
-  },
-  textInfo: {
-    flex: 2,
-  },
-  imageCard: {
-    flex: 2,
-    marginBottom: 20,
-  },
-  imageSize: {
-    width: 114,
-    height: 80,
-  },
-  moreInfoBtn: {
-    flex: 2,
   },
 });
