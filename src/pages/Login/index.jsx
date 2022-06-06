@@ -15,12 +15,6 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  // useEffect(() => {
-  (async () => {
-    console.log(JSON.parse(await AsyncStorage.getItem("login")));
-  })();
-  // }, []);
-
   const handleLogin = () => {
     let isMounted = true;
     login(email, password)

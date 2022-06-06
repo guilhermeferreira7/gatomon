@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Text, View, FlatList, StyleSheet, Image, Alert } from "react-native";
 
 import api from "../../services/api";
+import getUserLogin from "../../services/getUserLogin";
 
 import colors from "../../assets/colors";
 
@@ -9,8 +10,12 @@ import Footer from "../../components/Footer";
 import GameInfo from "../../components/GameInfo";
 import AppButton from "../../components/AppButton";
 
+import useList from "../../firebase/hooks/useList";
+
 export default function Store() {
   const [cats, setCats] = useState([]);
+  const [uid, setUid] = useState("");
+  const cards = useList(uid + "/cards/");
 
   const loadCats = async () => {
     let cats = [];
@@ -22,8 +27,6 @@ export default function Store() {
         tempNums.push(random);
         cats.push(cat.data);
       } else {
-        console.log(random);
-        console.log(tempNums);
         i--;
       }
     }
@@ -34,12 +37,17 @@ export default function Store() {
   useEffect(() => {
     let isMounted = true;
     loadCats();
+    getUserLogin().then((res) => {
+      setUid(res.uid);
+    });
   }, []);
 
   const Card = ({ item }) => {
     const value = item.CatType == "Rare" ? 1000 : 300;
 
     const buy = () => {
+      cards.create(item);
+
       console.log("bought");
     };
 

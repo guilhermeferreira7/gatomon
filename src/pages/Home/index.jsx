@@ -9,9 +9,9 @@ import AppButton from "../../components/AppButton";
 import GameInfo from "../../components/GameInfo";
 
 export default function Home({ navigation }) {
-  // (async () => {
-  //   console.log(JSON.parse(await AsyncStorage.getItem("login")));
-  // })();
+  (async () => {
+    console.log(JSON.parse(await AsyncStorage.getItem("login")).uid);
+  })();
 
   return (
     <View style={styles.container}>
