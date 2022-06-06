@@ -3,32 +3,22 @@ import { View, StyleSheet, Text, FlatList } from "react-native";
 
 import Header from "../../components/Header";
 
-import getUserLogin from "../../services/getUserLogin";
 import useList from "../../firebase/hooks/useList";
 import colors from "../../assets/colors";
+import { getAuth } from "firebase/auth";
 
 export default function Collection() {
-  const cards = useList(uid + "/cards/");
-  console.log("--");
+  const uid = getAuth().currentUser.uid;
+  const cards = useList(uid + "/cards/").data;
   console.log(cards);
-  const [uid, setUid] = useState("");
-  const [cats, setCats] = useState([]);
 
-  const loadCats = () => {
-    setCats(cards.data);
-  };
-
-  useEffect(() => {
-    getUserLogin().then((res) => {
-      setUid(res.uid);
-    });
-    loadCats();
-  }, []);
+  // const result = Object.entries(cards);
+  // console.log(result);
 
   const Card = ({ item }) => {
     return (
       <View>
-        <Text>{item.CatName}</Text>
+        <Text>{item}</Text>
       </View>
     );
   };
@@ -39,7 +29,7 @@ export default function Collection() {
 
       <FlatList
         numColumns={2}
-        data={cats}
+        data={cards}
         renderItem={Card}
         keyExtractor={(item, index) => index}
       />

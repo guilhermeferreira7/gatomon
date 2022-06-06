@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, ScrollView, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import colors from "../../assets/colors";
@@ -19,32 +19,34 @@ export default function Home({ navigation }) {
 
       <GameInfo />
 
-      <View style={styles.btnList}>
-        <View style={styles.btn}>
-          <AppButton
-            onPress={() => navigation.navigate("Game")}
-            title="Jogar"
-          />
+      <ScrollView>
+        <View style={styles.btnList}>
+          <View style={styles.btn}>
+            <AppButton
+              onPress={() => navigation.navigate("Game")}
+              title="Jogar"
+            />
+          </View>
+          <View style={styles.btn}>
+            <AppButton
+              onPress={() => navigation.navigate("Collection")}
+              title="Coleção"
+            />
+          </View>
+          <View style={styles.btn}>
+            <AppButton
+              onPress={() => navigation.navigate("Store")}
+              title="Loja"
+            />
+          </View>
+          <View style={styles.btn}>
+            <AppButton
+              onPress={() => navigation.navigate("Ranking")}
+              title="Ranking"
+            />
+          </View>
         </View>
-        <View style={styles.btn}>
-          <AppButton
-            onPress={() => navigation.navigate("Collection")}
-            title="Coleção"
-          />
-        </View>
-        <View style={styles.btn}>
-          <AppButton
-            onPress={() => navigation.navigate("Store")}
-            title="Loja"
-          />
-        </View>
-        <View style={styles.btn}>
-          <AppButton
-            onPress={() => navigation.navigate("Ranking")}
-            title="Ranking"
-          />
-        </View>
-      </View>
+      </ScrollView>
 
       <Footer />
     </View>
