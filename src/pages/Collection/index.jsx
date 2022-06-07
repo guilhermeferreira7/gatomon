@@ -14,7 +14,7 @@ import { getAuth } from "firebase/auth";
 export default function Collection() {
   const uid = getAuth().currentUser.uid;
   let cards = useList(uid + "/cards/").data;
-  if (!cards) return <Text>Loading</Text>;
+  if (!cards) return <Text>Loading...</Text>;
 
   cards = listToArray(cards);
 

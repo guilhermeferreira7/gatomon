@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, TextInput, StyleSheet, Text, Image, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -10,16 +10,19 @@ import AppButton from "../../components/AppButton";
 
 import useAuth from "../../firebase/hooks/useAuth";
 
+import AppContext from "../../contexts/AppContext";
+
 export default function Login({ navigation }) {
+  const app = useContext(AppContext);
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    let isMounted = true;
     login(email, password)
       .then((res) => {
         AsyncStorage.setItem("login", JSON.stringify(res.user));
+        app.setLogged(true);
         navigation.navigate("Home");
       })
       .catch(() => {
