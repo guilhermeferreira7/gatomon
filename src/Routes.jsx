@@ -10,6 +10,8 @@ import Login from "./pages/Login";
 import Ranking from "./pages/Ranking";
 import Store from "./pages/Store";
 import Collection from "./pages/Collection";
+import SetInfo from "./pages/SetInfo";
+
 import AppContext from "./contexts/AppContext";
 
 const Stack = createNativeStackNavigator();
@@ -60,7 +62,21 @@ export default function Routes() {
         ) : (
           <Stack.Group>
             <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="CreateAccount" component={CreateAccount} />
+            <Stack.Screen
+              name="CreateAccount"
+              component={CreateAccount}
+              options={{
+                title: "Criar conta",
+              }}
+            />
+            <Stack.Screen
+              name="SetInfo"
+              component={SetInfo}
+              options={{
+                headerBackVisible: false,
+                title: "Criar conta",
+              }}
+            />
           </Stack.Group>
         )}
       </Stack.Navigator>

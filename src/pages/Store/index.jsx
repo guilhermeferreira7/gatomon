@@ -22,20 +22,20 @@ export default function Store() {
   };
 
   useEffect(() => {
-    let isMounted = true;
     getCats();
     getUserLogin().then((res) => {
       setUid(res.uid);
     });
   }, []);
 
+  if (cats.length === 0)
+    return <Text style={styles.container}>loading...</Text>;
+
   const Card = ({ item }) => {
     const value = item.CatType == "Rare" ? 1000 : 300;
 
     const buy = () => {
       cards.create(item);
-
-      console.log("bought");
     };
 
     const handleBuy = () => {

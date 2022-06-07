@@ -1,11 +1,21 @@
 import { View, Text, StyleSheet } from "react-native";
-import React, { useEffect } from "react";
+import { useState } from "react";
+
+import colors from "../../assets/colors";
+import useList from "../../firebase/hooks/useList";
+import listToArray from "../../firebase/services/listToArray";
+import getUserLogin from "../../services/getUserLogin";
+import { getAuth } from "firebase/auth";
 
 export default function GameInfo() {
+  const uid = getAuth().currentUser.uid;
+  let cards = useList(`${uid}/cards/`).data;
+  if (!cards) return <Text>Loading</Text>;
+  cards = listToArray(cards);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>gatocoins 200</Text>
-      <Text style={styles.text}>gatomons 12</Text>
+      <Text style={styles.text}>gatomons {cards.length}</Text>
     </View>
   );
 }
@@ -19,6 +29,6 @@ const styles = StyleSheet.create({
     padding: 20,
     fontSize: 20,
     fontStyle: "italic",
-    color: "#aaaaaa",
+    color: colors.primary,
   },
 });

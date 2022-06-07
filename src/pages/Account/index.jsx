@@ -3,7 +3,6 @@ import { Text, View, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import colors from "../../assets/colors";
-
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import AppButton from "../../components/AppButton";
@@ -14,7 +13,7 @@ import useAuth from "../../firebase/hooks/useAuth";
 
 export default function Account({ navigation }) {
   const app = useContext(AppContext);
-  const { logout, user } = useAuth();
+  const { logout } = useAuth();
 
   const handleLogout = () => {
     logout();

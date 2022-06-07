@@ -1,10 +1,4 @@
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableHighlight,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import React from "react";
 import colors from "../../assets/colors";
 import { useNavigation } from "@react-navigation/native";

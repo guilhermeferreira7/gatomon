@@ -11,7 +11,6 @@ import useAuth from "./useAuth";
 
 export default function useList(reference) {
   const [data, setData] = useState(null);
-  const [cats, setCats] = useState([]);
 
   const create = (newVal) => {
     const databaseReference = ref(getDatabase(), reference);

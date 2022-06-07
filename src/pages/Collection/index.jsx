@@ -1,7 +1,5 @@
-import { useState, useEffect } from "react";
 import { View, StyleSheet, Text, FlatList, Image } from "react-native";
 
-import Header from "../../components/Header";
 import AppButton from "../../components/AppButton";
 
 import useList from "../../firebase/hooks/useList";
@@ -10,6 +8,8 @@ import listToArray from "../../firebase/services/listToArray";
 import colors from "../../assets/colors";
 
 import { getAuth } from "firebase/auth";
+import Footer from "../../components/Footer";
+import GameInfo from "../../components/GameInfo";
 
 export default function Collection() {
   const uid = getAuth().currentUser.uid;
@@ -19,9 +19,7 @@ export default function Collection() {
   cards = listToArray(cards);
 
   const Card = ({ item }) => {
-    const value = item.CatType == "Rare" ? 1000 : 300;
-
-    const info = () => {
+    const getInfo = () => {
       console.log("info");
     };
 
@@ -37,22 +35,26 @@ export default function Collection() {
           {item.CatName} {item.CatPowerLevel}
         </Text>
         <Text>{item.CatType == "Rare" ? "Raro" : "Comum"}</Text>
-        <Text>Valor: {value}</Text>
-        <AppButton title="Info" onPress={info} />
+        <AppButton title="Info" onPress={getInfo} />
       </View>
     );
   };
 
   return (
     <View style={styles.container}>
-      <Header />
+      <GameInfo />
 
       <FlatList
+        style={styles.flatList}
         numColumns={2}
         data={cards}
         renderItem={Card}
         keyExtractor={(item, index) => index}
       />
+
+      <View style={styles.footer}>
+        <Footer />
+      </View>
     </View>
   );
 }
@@ -67,6 +69,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   card: {
+    maxWidth: 180,
     alignItems: "center",
     flexGrow: 1,
     flexBasis: 0,

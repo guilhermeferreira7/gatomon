@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { TextInput, View, StyleSheet, Alert } from "react-native";
 
 import { updateProfile } from "firebase/auth";
@@ -21,7 +21,7 @@ export default function CreateAccount({ navigation }) {
     createUser(email, password)
       .then((res) => {
         updateProfile(res.user, { displayName: name });
-        navigation.navigate("Login");
+        navigation.navigate("SetInfo", { user: { name, email, password } });
       })
       .catch((error) => {
         let errorMessage = formatFirebaseError(error.code);
