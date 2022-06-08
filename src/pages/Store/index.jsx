@@ -11,6 +11,7 @@ import GameInfo from "../../components/GameInfo";
 import AppButton from "../../components/AppButton";
 
 import useList from "../../firebase/hooks/useList";
+import Loading from "../../components/Loading";
 
 export default function Store() {
   const [cats, setCats] = useState([]);
@@ -28,8 +29,7 @@ export default function Store() {
     });
   }, []);
 
-  if (cats.length === 0)
-    return <Text style={styles.container}>loading...</Text>;
+  if (cats.length === 0) return <Loading>loading...</Loading>;
 
   const Card = ({ item }) => {
     const value = item.CatType == "Rare" ? 1000 : 300;

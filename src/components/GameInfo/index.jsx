@@ -6,11 +6,12 @@ import useList from "../../firebase/hooks/useList";
 import listToArray from "../../firebase/services/listToArray";
 import getUserLogin from "../../services/getUserLogin";
 import { getAuth } from "firebase/auth";
+import Loading from "../Loading";
 
 export default function GameInfo() {
   const uid = getAuth().currentUser.uid;
   let cards = useList(`${uid}/cards/`).data;
-  if (!cards) return <Text>Loading</Text>;
+  if (!cards) return <Loading>Loading</Loading>;
   cards = listToArray(cards);
 
   return (

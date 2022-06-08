@@ -21,7 +21,7 @@ export default function CreateAccount({ navigation }) {
     createUser(email, password)
       .then((res) => {
         updateProfile(res.user, { displayName: name });
-        navigation.navigate("SetInfo", { user: { name, email, password } });
+        navigation.navigate("SetInfo", { user: res.user });
       })
       .catch((error) => {
         let errorMessage = formatFirebaseError(error.code);

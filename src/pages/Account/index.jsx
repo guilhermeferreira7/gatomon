@@ -11,9 +11,15 @@ import AppContext from "../../contexts/AppContext";
 
 import useAuth from "../../firebase/hooks/useAuth";
 
+import { getAuth } from "firebase/auth";
+
 export default function Account({ navigation }) {
   const app = useContext(AppContext);
   const { logout } = useAuth();
+
+  const user = getAuth().currentUser;
+  const name = user.displayName;
+  const email = user.email;
 
   const handleLogout = () => {
     logout();
@@ -28,6 +34,8 @@ export default function Account({ navigation }) {
       <Header />
 
       <Text>Informações da conta</Text>
+      <Text>{name}</Text>
+      <Text>{email}</Text>
 
       <AppButton onPress={handleLogout} title="Logout" />
 
