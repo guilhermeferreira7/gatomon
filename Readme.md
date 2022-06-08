@@ -56,7 +56,7 @@ Pretendo criar algum jogo muito simples para conseguir coletar moedas para o apl
 - [ ] Editar usuário
 - [ ] Adicionar todos os atributos dos usuários (cards, moedas, funções de controle dos atributos) 
 - [ ] Adicionar e mudar foto de perfil dos usuários
-- [ ] Listar coleção
+- [x] Listar coleção
 - [x] Acesso a API
 - [ ] Forma de adquirir moeda virtual
 - [x] Loja com alguns itens aleatórios da API
