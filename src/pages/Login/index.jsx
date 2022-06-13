@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { View, TextInput, StyleSheet, Text, Image, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import catImg from "./Hermeowne.jpg";
 import colors from "../../assets/colors";
 
 import Footer from "../../components/Footer";
@@ -11,6 +10,7 @@ import AppButton from "../../components/AppButton";
 import useAuth from "../../firebase/hooks/useAuth";
 
 import AppContext from "../../contexts/AppContext";
+import HeaderAlt from "../../components/HeaderAlt";
 
 export default function Login({ navigation }) {
   const app = useContext(AppContext);
@@ -34,18 +34,9 @@ export default function Login({ navigation }) {
       });
   };
 
-  const LoginHeader = () => {
-    return (
-      <View style={styles.headerContainer}>
-        <Text style={styles.headerTitle}>Gatomon</Text>
-        <Image source={catImg} style={styles.icon} />
-      </View>
-    );
-  };
-
   return (
     <View style={styles.container}>
-      <LoginHeader />
+      <HeaderAlt />
 
       <View style={styles.textInput}>
         <TextInput
@@ -109,22 +100,5 @@ const styles = StyleSheet.create({
   placeholder: {
     color: colors.primary,
     fontSize: 20,
-  },
-
-  headerContainer: {
-    flex: 1,
-    padding: 20,
-    flexDirection: "row",
-  },
-  headerTitle: {
-    fontSize: 28,
-    color: colors.primary,
-    textTransform: "uppercase",
-    alignSelf: "center",
-  },
-  icon: {
-    width: 114,
-    height: 80,
-    alignSelf: "center",
   },
 });

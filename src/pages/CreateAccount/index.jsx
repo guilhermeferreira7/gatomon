@@ -1,18 +1,22 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { TextInput, View, StyleSheet, Alert } from "react-native";
 
-import { updateProfile } from "firebase/auth";
+import { updateProfile, getAuth } from "firebase/auth";
 
 import colors from "../../assets/colors";
 
-import Header from "../../components/Header";
+import HeaderAlt from "../../components/HeaderAlt";
 import Footer from "../../components/Footer";
 import AppButton from "../../components/AppButton";
 
+import useAuth from "../../firebase/hooks/useAuth";
+
 import { createUser } from "../../firebase/services/userSettings";
 import formatFirebaseError from "../../firebase/services/formatFirebaseError";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function CreateAccount({ navigation }) {
+  const { login } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,10 +25,10 @@ export default function CreateAccount({ navigation }) {
     createUser(email, password)
       .then((res) => {
         updateProfile(res.user, { displayName: name });
-        navigation.navigate("SetInfo", { user: res.user });
+        navigation.navigate("SetInfo");
       })
       .catch((error) => {
-        let errorMessage = formatFirebaseError(error.code);
+        const errorMessage = formatFirebaseError(error.code);
 
         Alert.alert("Erro ao criar a conta", errorMessage, [
           {
@@ -36,7 +40,7 @@ export default function CreateAccount({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Header />
+      <HeaderAlt />
 
       <View style={styles.textInput}>
         <TextInput
