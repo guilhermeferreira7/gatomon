@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -11,15 +11,25 @@ import AppContext from "../../contexts/AppContext";
 
 import useAuth from "../../firebase/hooks/useAuth";
 
+import getUserLogin from "../../services/getUserLogin";
+
 import { getAuth } from "firebase/auth";
 
 export default function Account({ navigation }) {
   const app = useContext(AppContext);
   const { logout } = useAuth();
 
-  const user = getAuth().currentUser;
-  const name = user.displayName;
-  const email = user.email;
+  useEffect(() => {
+    if (getAuth().currentUser) {
+      console.log("conta " + getAuth().currentUser);
+    } else {
+      console.log("conta " + getAuth());
+    }
+  }, []);
+
+  // const user = getAuth().currentUser;
+  // const name = user.displayName;
+  // const email = user.email;
 
   const handleLogout = () => {
     logout();
@@ -34,8 +44,8 @@ export default function Account({ navigation }) {
       <Header />
 
       <Text>Informações da conta</Text>
-      <Text>{name}</Text>
-      <Text>{email}</Text>
+      {/* <Text>{name}</Text>
+      <Text>{email}</Text> */}
 
       <AppButton onPress={handleLogout} title="Logout" />
 

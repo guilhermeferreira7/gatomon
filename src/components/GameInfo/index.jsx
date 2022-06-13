@@ -7,10 +7,12 @@ import { getAuth } from "firebase/auth";
 import Loading from "../Loading";
 
 export default function GameInfo() {
-  const uid = getAuth().currentUser.uid;
-  let cards = useList(`${uid}/cards/`).data;
-  if (!cards) return <Loading />;
-  cards = listToArray(cards);
+  if (getAuth()) {
+    const uid = getAuth().currentUser.uid;
+    let cards = useList(`${uid}/cards/`).data;
+    if (!cards) return <Loading />;
+    cards = listToArray(cards);
+  }
 
   return (
     <View style={styles.container}>

@@ -14,6 +14,7 @@ import HeaderAlt from "../../components/HeaderAlt";
 
 export default function Login({ navigation }) {
   const app = useContext(AppContext);
+  console.log(app.logged);
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

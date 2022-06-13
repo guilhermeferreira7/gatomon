@@ -13,7 +13,7 @@ export default function Home({ navigation }) {
     <View style={styles.container}>
       <Header />
 
-      <GameInfo />
+      {/* <GameInfo /> */}
 
       <ScrollView>
         <View style={styles.btnList}>

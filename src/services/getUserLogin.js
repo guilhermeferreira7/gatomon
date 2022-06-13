@@ -1,5 +1,11 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default async function getUserLogin() {
-  return JSON.parse(await AsyncStorage.getItem("login"));
+  AsyncStorage.getItem("login").then((res) => {
+    if (res) {
+      return res;
+    }
+  });
+
+  return null;
 }
