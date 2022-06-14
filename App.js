@@ -10,18 +10,16 @@ import { SafeAreaView, StyleSheet, Text } from "react-native";
 
 import Routes from "./src/routes";
 
-import { getAuth } from "firebase/auth";
-
 import firebaseConfig from "./src/firebase/config/firebaseConfig";
 import useFirebase from "./src/firebase/hooks/useFirebase";
 
 import AppContext from "./src/contexts/AppContext";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import getUserLogin from "./src/services/getUserLogin";
 
 export default function App() {
   const firebaseApp = useFirebase(firebaseConfig);
   const [logged, setLogged] = useState(false);
+
   const app = {
     logged,
     setLogged,

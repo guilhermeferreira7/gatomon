@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { Text, View, FlatList, StyleSheet, Image, Alert } from "react-native";
 
-import getUserLogin from "../../services/getUserLogin";
-import loadCats from "../../services/loadCats";
+import getUserLogin from "../../../services/getUserLogin";
+import loadCats from "../../../services/loadCats";
 
-import colors from "../../assets/colors";
+import colors from "../../../assets/colors";
 
-import Footer from "../../components/Footer";
-import GameInfo from "../../components/GameInfo";
-import AppButton from "../../components/AppButton";
+import Footer from "../../../components/Footer";
+import GameInfo from "../../../components/GameInfo";
+import AppButton from "../../../components/AppButton";
 
-import useList from "../../firebase/hooks/useList";
-import Loading from "../../components/Loading";
+import useList from "../../../firebase/hooks/useList";
+import Loading from "../../../components/Loading";
 
 export default function Store() {
   const [cats, setCats] = useState([]);

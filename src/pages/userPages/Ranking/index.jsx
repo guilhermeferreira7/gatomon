@@ -1,15 +1,14 @@
 import { Text, View, StyleSheet } from "react-native";
 
-import colors from "../../assets/colors";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+import colors from "../../../assets/colors";
 
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-
-export default function Game() {
+export default function Ranking() {
   return (
     <View style={styles.container}>
       <Header />
-      <Text>Interface de jogo</Text>
+      <Text>Ranking</Text>
       <Footer />
     </View>
   );

@@ -1,14 +1,18 @@
 import { View, ScrollView, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import colors from "../../assets/colors";
+import colors from "../../../assets/colors";
 
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import AppButton from "../../components/AppButton";
-import GameInfo from "../../components/GameInfo";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+import AppButton from "../../../components/AppButton";
+import GameInfo from "../../../components/GameInfo";
+import getUserLogin from "../../../services/getUserLogin";
 
 export default function Home({ navigation }) {
+  const userLogin = getUserLogin();
+  console.log(userLogin);
+
   return (
     <View style={styles.container}>
       <Header />

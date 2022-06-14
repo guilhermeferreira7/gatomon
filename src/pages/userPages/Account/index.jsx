@@ -2,16 +2,16 @@ import { useContext, useEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import colors from "../../assets/colors";
-import Header from "../../components/Header";
-import Footer from "../../components/Footer";
-import AppButton from "../../components/AppButton";
+import colors from "../../../assets/colors";
+import Header from "../../../components/Header";
+import Footer from "../../../components/Footer";
+import AppButton from "../../../components/AppButton";
 
-import AppContext from "../../contexts/AppContext";
+import AppContext from "../../../contexts/AppContext";
 
-import useAuth from "../../firebase/hooks/useAuth";
+import useAuth from "../../../firebase/hooks/useAuth";
 
-import getUserLogin from "../../services/getUserLogin";
+import getUserLogin from "../../../services/getUserLogin";
 
 import { getAuth } from "firebase/auth";
 
@@ -19,15 +19,14 @@ export default function Account({ navigation }) {
   const app = useContext(AppContext);
   const { logout } = useAuth();
 
+  // console.log(getUserLogin());
+
+  const user = getUserLogin();
+
   useEffect(() => {
-    if (getAuth().currentUser) {
-      console.log("conta " + getAuth().currentUser);
-    } else {
-      console.log("conta " + getAuth());
-    }
+    console.log(user);
   }, []);
 
-  // const user = getAuth().currentUser;
   // const name = user.displayName;
   // const email = user.email;
 

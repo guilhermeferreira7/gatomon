@@ -1,15 +1,15 @@
 import { View, StyleSheet, Text, FlatList, Image } from "react-native";
 
-import AppButton from "../../components/AppButton";
+import AppButton from "../../../components/AppButton";
 
-import useList from "../../firebase/hooks/useList";
-import listToArray from "../../firebase/services/listToArray";
+import useList from "../../../firebase/hooks/useList";
+import listToArray from "../../../firebase/services/listToArray";
 
-import colors from "../../assets/colors";
+import colors from "../../../assets/colors";
 
 import { getAuth } from "firebase/auth";
-import Footer from "../../components/Footer";
-import GameInfo from "../../components/GameInfo";
+import Footer from "../../../components/Footer";
+import GameInfo from "../../../components/GameInfo";
 
 export default function Collection() {
   const uid = getAuth().currentUser.uid;

@@ -1,20 +1,21 @@
 import React, { useState, useContext } from "react";
-import { View, TextInput, StyleSheet, Text, Image, Alert } from "react-native";
+import { View, TextInput, StyleSheet, Text, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import colors from "../../assets/colors";
+import colors from "../../../assets/colors";
 
-import Footer from "../../components/Footer";
-import AppButton from "../../components/AppButton";
+import HeaderAlt from "../../../components/HeaderAlt";
+import Footer from "../../../components/Footer";
+import AppButton from "../../../components/AppButton";
 
-import useAuth from "../../firebase/hooks/useAuth";
+import useAuth from "../../../firebase/hooks/useAuth";
 
-import AppContext from "../../contexts/AppContext";
-import HeaderAlt from "../../components/HeaderAlt";
+import AppContext from "../../../contexts/AppContext";
+
+import getUserLogin from "../../../services/getUserLogin";
 
 export default function Login({ navigation }) {
   const app = useContext(AppContext);
-  console.log(app.logged);
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +23,7 @@ export default function Login({ navigation }) {
   const handleLogin = () => {
     login(email, password)
       .then((res) => {
+        AsyncStorage.removeItem("login");
         AsyncStorage.setItem("login", JSON.stringify(res.user));
         app.setLogged(true);
         navigation.navigate("Home");

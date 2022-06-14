@@ -1,10 +1,10 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Home from "../pages/Home";
-import Account from "../pages/Account";
-import Game from "../pages/Game";
-import Ranking from "../pages/Ranking";
-import Store from "../pages/Store";
-import Collection from "../pages/Collection";
+import Home from "../pages/userPages/Home";
+import Account from "../pages/userPages/Account";
+import Game from "../pages/userPages/Game";
+import Ranking from "../pages/userPages/Ranking";
+import Store from "../pages/userPages/Store";
+import Collection from "../pages/userPages/Collection";
 
 export default function UserPages() {
   const Stack = createNativeStackNavigator();

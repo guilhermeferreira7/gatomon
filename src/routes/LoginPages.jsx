@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Login from "../pages/Login";
-import SetInfo from "../pages/SetInfo";
-import CreateAccount from "../pages/CreateAccount";
+import Login from "../pages/signUpPages/Login";
+import SetInfo from "../pages/signUpPages/SetInfo";
+import CreateAccount from "../pages/signUpPages/CreateAccount";
 
 export default function LoginPages() {
   const Stack = createNativeStackNavigator();

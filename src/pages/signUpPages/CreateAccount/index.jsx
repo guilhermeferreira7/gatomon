@@ -1,22 +1,18 @@
 import { useState } from "react";
 import { TextInput, View, StyleSheet, Alert } from "react-native";
 
-import { updateProfile, getAuth } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 
-import colors from "../../assets/colors";
+import colors from "../../../assets/colors";
 
-import HeaderAlt from "../../components/HeaderAlt";
-import Footer from "../../components/Footer";
-import AppButton from "../../components/AppButton";
+import HeaderAlt from "../../../components/HeaderAlt";
+import Footer from "../../../components/Footer";
+import AppButton from "../../../components/AppButton";
 
-import useAuth from "../../firebase/hooks/useAuth";
-
-import { createUser } from "../../firebase/services/userSettings";
-import formatFirebaseError from "../../firebase/services/formatFirebaseError";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { createUser } from "../../../firebase/services/userSettings";
+import formatFirebaseError from "../../../firebase/services/formatFirebaseError";
 
 export default function CreateAccount({ navigation }) {
-  const { login } = useAuth();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

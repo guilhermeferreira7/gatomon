@@ -1,11 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default async function getUserLogin() {
+export default function getUserLogin() {
+  let user = {};
   AsyncStorage.getItem("login").then((res) => {
     if (res) {
-      return res;
+      user = res;
     }
   });
 
-  return null;
+  return user;
 }
