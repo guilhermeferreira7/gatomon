@@ -1,4 +1,6 @@
-import { View, Text, StyleSheet } from "react-native";
+import { useState, useContext } from "react";
+import { View, Text, StyleSheet, Modal } from "react-native";
+
 import { getAuth } from "firebase/auth";
 
 import api from "../../../services/api";
@@ -6,29 +8,56 @@ import api from "../../../services/api";
 import useList from "../../../firebase/hooks/useList";
 
 import HeaderAlt from "../../../components/HeaderAlt";
-import Loading from "../../../components/Loading";
 import Footer from "../../../components/Footer";
 
 import colors from "../../../assets/colors";
 import AppButton from "../../../components/AppButton";
+import useAuth from "../../../firebase/hooks/useAuth";
 
-export default function SetInfo() {
+import AppContext from "../../../contexts/AppContext";
+import Loading from "../../../components/Loading";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+export default function SetInfo({ route, navigation }) {
+  const { login } = useAuth();
+  const app = useContext(AppContext);
+  const [modalVisible, setModalVisible] = useState(false);
   const user = getAuth().currentUser;
-  const name = user.displayName;
   const email = user.email;
+  const name = user.displayName;
+  const password = route.params.password;
   const uid = getAuth().currentUser.uid;
   const cards = useList(uid + "/cards/");
 
-  let starterGatomon = {};
-  (async () => {
-    starterGatomon = await api.get("/cats/1");
-    if (!starterGatomon) return <Loading />;
-  })();
+  console.log(password);
 
-  console.log(starterGatomon);
+  const cats = [];
+
+  for (let i = 1; i <= 4; i++) {
+    api.get(`/cats/${i}`).then((res) => {
+      cats.push(res.data);
+    });
+  }
+
+  cats.forEach((cat) => {
+    console.log(cat);
+  });
 
   return (
     <View style={styles.container}>
+      <Modal animationType="fade" visible={modalVisible} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Text>Modal content</Text>
+          <AppButton
+            title="Fechar"
+            onPress={() => {
+              setModalVisible(!modalVisible);
+            }}
+          />
+        </View>
+      </Modal>
+
       <HeaderAlt />
 
       <View style={styles.title}>
@@ -41,8 +70,22 @@ export default function SetInfo() {
         <Text style={styles.text}>Email: {email}</Text>
       </View>
 
-      <View>
+      <View style={styles.button}>
         <AppButton title="Escolha um avatar" />
+      </View>
+      <View style={styles.button}>
+        <AppButton
+          title="Continuar"
+          onPress={() => {
+            login(email, password).then((res) => {
+              AsyncStorage.removeItem("login");
+              AsyncStorage.setItem("login", JSON.stringify(res.user));
+              app.setLogged(true);
+              if (!app.logged) return <Loading />;
+              navigation.navigate("Home");
+            });
+          }}
+        />
       </View>
 
       <Footer />
@@ -57,7 +100,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   title: {
-    marginBottom: 10,
     alignItems: "center",
   },
   textTitle: {
@@ -68,6 +110,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: colors.primary,
   },
-  info: {},
+  info: {
+    margin: 20,
+  },
   inputField: {},
+  button: {
+    margin: 10,
+  },
 });

@@ -24,9 +24,7 @@ export default function Store() {
 
   useEffect(() => {
     getCats();
-    getUserLogin().then((res) => {
-      setUid(res.uid);
-    });
+    setUid(getUserLogin().uid);
   }, []);
 
   if (cats.length === 0) return <Loading>loading...</Loading>;
@@ -71,7 +69,7 @@ export default function Store() {
 
   return (
     <View style={styles.container}>
-      <GameInfo />
+      {/* <GameInfo /> */}
 
       <View>
         <Text style={styles.text}>Próxima atualização em 3h 20m 10s</Text>

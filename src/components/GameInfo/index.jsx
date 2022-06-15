@@ -1,22 +1,21 @@
 import { View, Text, StyleSheet } from "react-native";
 
 import colors from "../../assets/colors";
-import useList from "../../firebase/hooks/useList";
-import listToArray from "../../firebase/services/listToArray";
-import { getAuth } from "firebase/auth";
-import Loading from "../Loading";
+
+import Loading from "../../components/Loading";
+
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import getUserLogin from "../../services/getUserLogin";
 
 export default function GameInfo() {
-  if (getAuth()) {
-    const uid = getAuth().currentUser.uid;
-    let cards = useList(`${uid}/cards/`).data;
-    if (!cards) return <Loading />;
-    cards = listToArray(cards);
-  }
+  const user = getUserLogin();
+  if (!user) return <Loading />;
+
+  const name = user.displayName;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>gatomons {cards.length}</Text>
+      <Text style={styles.text}>{name}</Text>
     </View>
   );
 }

@@ -23,9 +23,9 @@ export default function Account({ navigation }) {
 
   const user = getUserLogin();
 
-  useEffect(() => {
-    console.log(user);
-  }, []);
+  // useEffect(() => {
+  //   console.log(user);
+  // }, []);
 
   // const name = user.displayName;
   // const email = user.email;

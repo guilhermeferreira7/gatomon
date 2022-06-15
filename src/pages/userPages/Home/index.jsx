@@ -1,5 +1,5 @@
-import { View, ScrollView, StyleSheet } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { View, ScrollView, StyleSheet, Modal, Text } from "react-native";
+import { useState } from "react";
 
 import colors from "../../../assets/colors";
 
@@ -10,14 +10,25 @@ import GameInfo from "../../../components/GameInfo";
 import getUserLogin from "../../../services/getUserLogin";
 
 export default function Home({ navigation }) {
-  const userLogin = getUserLogin();
-  console.log(userLogin);
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <View style={styles.container}>
       <Header />
 
-      {/* <GameInfo /> */}
+      <Modal animationType="fade" visible={modalVisible} transparent={true}>
+        <View style={styles.modalContainer}>
+          <Text>Modal content</Text>
+          <AppButton
+            title="Fechar"
+            onPress={() => {
+              setModalVisible(!modalVisible);
+            }}
+          />
+        </View>
+      </Modal>
+
+      <GameInfo />
 
       <ScrollView>
         <View style={styles.btnList}>
@@ -45,6 +56,14 @@ export default function Home({ navigation }) {
               title="Ranking"
             />
           </View>
+          <View style={styles.btn}>
+            <AppButton
+              title="Teste Modal"
+              onPress={() => {
+                setModalVisible(!modalVisible);
+              }}
+            />
+          </View>
         </View>
       </ScrollView>
 
@@ -64,5 +83,19 @@ const styles = StyleSheet.create({
   },
   btn: {
     margin: 10,
+  },
+  modalContainer: {
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#ddd",
+    shadowColor: "#fff",
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    width: 200,
+    height: 200,
+    margin: 200,
   },
 });

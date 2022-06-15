@@ -10,11 +10,13 @@ import colors from "../../../assets/colors";
 import { getAuth } from "firebase/auth";
 import Footer from "../../../components/Footer";
 import GameInfo from "../../../components/GameInfo";
+import Loading from "../../../components/Loading";
+import getUserLogin from "../../../services/getUserLogin";
 
 export default function Collection() {
-  const uid = getAuth().currentUser.uid;
+  const uid = getUserLogin().uid;
   let cards = useList(uid + "/cards/").data;
-  if (!cards) return <Text>Loading...</Text>;
+  if (!cards) return <Loading />;
 
   cards = listToArray(cards);
 
@@ -42,7 +44,7 @@ export default function Collection() {
 
   return (
     <View style={styles.container}>
-      <GameInfo />
+      {/* <GameInfo /> */}
 
       <FlatList
         style={styles.flatList}

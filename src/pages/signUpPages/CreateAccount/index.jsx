@@ -11,6 +11,7 @@ import AppButton from "../../../components/AppButton";
 
 import { createUser } from "../../../firebase/services/userSettings";
 import formatFirebaseError from "../../../firebase/services/formatFirebaseError";
+import Loading from "../../../components/Loading";
 
 export default function CreateAccount({ navigation }) {
   const [name, setName] = useState("");
@@ -20,8 +21,9 @@ export default function CreateAccount({ navigation }) {
   const handleCreateAccount = () => {
     createUser(email, password)
       .then((res) => {
-        updateProfile(res.user, { displayName: name });
-        navigation.navigate("SetInfo");
+        updateProfile(res.user, { displayName: name }).then(() => {
+          navigation.navigate("SetInfo", { password });
+        });
       })
       .catch((error) => {
         const errorMessage = formatFirebaseError(error.code);
