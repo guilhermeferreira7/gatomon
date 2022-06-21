@@ -16,9 +16,22 @@ import useFirebase from "./src/firebase/hooks/useFirebase";
 import AppContext from "./src/contexts/AppContext";
 import getUserLogin from "./src/services/getUserLogin";
 
+import i18n from "i18n-js";
+
+import * as Localization from "expo-localization";
+
 export default function App() {
   const firebaseApp = useFirebase(firebaseConfig);
   const [logged, setLogged] = useState(false);
+
+  i18n.translations = {
+    en: {
+      password: "Password",
+      signUp: "Create Account",
+      signUpBtn: "Sign-up",
+    },
+    pt: { password: "Senha", signUp: "Cadastre-se", signUpBtn: "Cadastrar" },
+  };
 
   const app = {
     logged,
@@ -26,9 +39,11 @@ export default function App() {
   };
 
   useEffect(() => {
-    if (getUserLogin()) {
-      setLogged(true);
-    }
+    getUserLogin().then((res) => {
+      if (res) {
+        setLogged(true);
+      }
+    });
   }, []);
 
   if (!firebaseApp) return <Text>Loading...</Text>;

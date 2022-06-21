@@ -4,7 +4,6 @@ import colors from "../../assets/colors";
 
 import Loading from "../../components/Loading";
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import getUserLogin from "../../services/getUserLogin";
 
 export default function GameInfo() {

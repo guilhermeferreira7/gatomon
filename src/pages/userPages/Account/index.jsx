@@ -13,22 +13,9 @@ import useAuth from "../../../firebase/hooks/useAuth";
 
 import getUserLogin from "../../../services/getUserLogin";
 
-import { getAuth } from "firebase/auth";
-
 export default function Account({ navigation }) {
   const app = useContext(AppContext);
   const { logout } = useAuth();
-
-  // console.log(getUserLogin());
-
-  const user = getUserLogin();
-
-  // useEffect(() => {
-  //   console.log(user);
-  // }, []);
-
-  // const name = user.displayName;
-  // const email = user.email;
 
   const handleLogout = () => {
     logout();
@@ -43,8 +30,6 @@ export default function Account({ navigation }) {
       <Header />
 
       <Text>Informações da conta</Text>
-      {/* <Text>{name}</Text>
-      <Text>{email}</Text> */}
 
       <AppButton onPress={handleLogout} title="Logout" />
 

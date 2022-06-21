@@ -1,5 +1,15 @@
 import React, { useState, useContext } from "react";
-import { View, TextInput, StyleSheet, Text, Alert } from "react-native";
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  Text,
+  Alert,
+  Touchable,
+  Image,
+  TouchableHighlight,
+  TouchableOpacity,
+} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import colors from "../../../assets/colors";
@@ -13,12 +23,19 @@ import useAuth from "../../../firebase/hooks/useAuth";
 import AppContext from "../../../contexts/AppContext";
 
 import getUserLogin from "../../../services/getUserLogin";
+import i18n from "i18n-js";
+
+import brFlag from "./br.png";
+import usFlag from "./us.png";
 
 export default function Login({ navigation }) {
   const app = useContext(AppContext);
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [lang, setLang] = useState("pt-BR");
+
+  i18n.locale = lang;
 
   const handleLogin = () => {
     login(email, password)
@@ -53,7 +70,7 @@ export default function Login({ navigation }) {
       <View style={styles.textInput}>
         <TextInput
           style={styles.placeholder}
-          placeholder="Senha"
+          placeholder={i18n.t("password")}
           onChangeText={(text) => {
             setPassword(text);
           }}
@@ -64,13 +81,22 @@ export default function Login({ navigation }) {
       </View>
 
       <View style={styles.register}>
-        <Text style={styles.text}>Não tem conta? </Text>
+        <Text style={styles.text}>{i18n.t("signUp")}</Text>
         <View style={styles.inputs}>
           <AppButton
             onPress={() => navigation.navigate("CreateAccount")}
-            title="Cadastrar"
+            title={i18n.t(i18n.t("signUpBtn"))}
           />
         </View>
+      </View>
+
+      <View style={styles.langs}>
+        <TouchableOpacity onPress={() => setLang("pt-BR")}>
+          <Image style={styles.img} source={brFlag} />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => setLang("en-US")}>
+          <Image style={styles.img} source={usFlag} />
+        </TouchableOpacity>
       </View>
 
       <Footer />
@@ -93,6 +119,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
+    alignSelf: "center",
   },
   textInput: {
     width: "50%",
@@ -103,5 +130,14 @@ const styles = StyleSheet.create({
   placeholder: {
     color: colors.primary,
     fontSize: 20,
+  },
+  langs: {
+    flexDirection: "row",
+    marginTop: 10,
+  },
+  img: {
+    margin: 10,
+    width: 50,
+    height: 50,
   },
 });
