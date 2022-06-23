@@ -13,6 +13,13 @@
   - Tela com ranking de usuários (por quantidade de cartas e por poder total)
   - Tela principal com algumas informações do usuário e botões para navegação
 
+## Avaliação Final
+ - [x] Correções AA2 (3)
+ - [ ] Recurso inédito (2)
+ - [ ] Conclusão outros requisitos (2)
+ - [x] Tradução i18n (2)
+ - [x] Apk (1)
+
 ## AA2
 
 ### Correções da AA1:
