@@ -12,6 +12,7 @@ import AppContext from "../../../contexts/AppContext";
 import useAuth from "../../../firebase/hooks/useAuth";
 
 import getUserLogin from "../../../services/getUserLogin";
+import I18n from "i18n-js";
 
 export default function Account({ navigation }) {
   const app = useContext(AppContext);
@@ -29,7 +30,7 @@ export default function Account({ navigation }) {
     <View style={styles.container}>
       <Header />
 
-      <Text>Informações da conta</Text>
+      <Text>{I18n.t("accountInfo")}</Text>
 
       <AppButton onPress={handleLogout} title="Logout" />
 

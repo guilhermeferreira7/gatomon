@@ -3,6 +3,8 @@ import Login from "../pages/signUpPages/Login";
 import SetInfo from "../pages/signUpPages/SetInfo";
 import CreateAccount from "../pages/signUpPages/CreateAccount";
 
+import I18n from "i18n-js";
+
 export default function LoginPages() {
   const Stack = createNativeStackNavigator();
   return (
@@ -12,7 +14,7 @@ export default function LoginPages() {
         name="CreateAccount"
         component={CreateAccount}
         options={{
-          title: "Criar conta",
+          title: I18n.t("createAccount"),
         }}
       />
       <Stack.Screen
@@ -20,7 +22,7 @@ export default function LoginPages() {
         component={SetInfo}
         options={{
           headerBackVisible: false,
-          title: "Criar conta",
+          title: I18n.t("createAccount"),
         }}
       />
     </Stack.Group>

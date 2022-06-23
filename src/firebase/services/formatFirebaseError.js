@@ -1,13 +1,15 @@
+import I18n from "i18n-js";
+
 export default function formatFirebaseError(firebaseErrorCode) {
   switch (firebaseErrorCode) {
     case "auth/invalid-email":
-      return "Email inválido";
+      return I18n.t("invalidEmail");
     case "auth/weak-password":
-      return "A senha precisa ter pelo menos 6 caracteres";
+      return I18n.t("weakPassword");
     case "auth/missing-email":
-      return "Digite um email";
+      return I18n.t("missingEmail");
     case "auth/email-already-in-use":
-      return "Email já cadastrado";
+      return I18n.t("emailInUse");
   }
-  return "Algo deu errado";
+  return I18n.t("error");
 }

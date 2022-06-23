@@ -12,6 +12,7 @@ import AppButton from "../../../components/AppButton";
 
 import useList from "../../../firebase/hooks/useList";
 import Loading from "../../../components/Loading";
+import I18n from "i18n-js";
 
 export default function Store() {
   const [cats, setCats] = useState([]);
@@ -62,7 +63,7 @@ export default function Store() {
         </Text>
         <Text>{item.CatType == "Rare" ? "Raro" : "Comum"}</Text>
         <Text>Valor: {value}</Text>
-        <AppButton title="Comprar" onPress={handleBuy} />
+        <AppButton title={I18n.t("buy")} onPress={handleBuy} />
       </View>
     );
   };
@@ -70,10 +71,6 @@ export default function Store() {
   return (
     <View style={styles.container}>
       {/* <GameInfo /> */}
-
-      <View>
-        <Text style={styles.text}>Próxima atualização em 3h 20m 10s</Text>
-      </View>
 
       <FlatList
         style={styles.flatList}

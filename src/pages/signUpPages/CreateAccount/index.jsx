@@ -13,6 +13,8 @@ import { createUser } from "../../../firebase/services/userSettings";
 import formatFirebaseError from "../../../firebase/services/formatFirebaseError";
 import Loading from "../../../components/Loading";
 
+import i18n from "i18n-js";
+
 export default function CreateAccount({ navigation }) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -28,7 +30,7 @@ export default function CreateAccount({ navigation }) {
       .catch((error) => {
         const errorMessage = formatFirebaseError(error.code);
 
-        Alert.alert("Erro ao criar a conta", errorMessage, [
+        Alert.alert(i18n.t("fail"), errorMessage, [
           {
             text: "Ok",
           },
@@ -43,7 +45,7 @@ export default function CreateAccount({ navigation }) {
       <View style={styles.textInput}>
         <TextInput
           style={styles.placeholder}
-          placeholder="Nome"
+          placeholder={i18n.t("name")}
           onChangeText={(text) => setName(text)}
         />
       </View>
@@ -57,12 +59,15 @@ export default function CreateAccount({ navigation }) {
       <View style={styles.textInput}>
         <TextInput
           style={styles.placeholder}
-          placeholder="Senha"
+          placeholder={i18n.t("password")}
           onChangeText={(text) => setPassword(text)}
         />
       </View>
       <View style={styles.button}>
-        <AppButton onPress={handleCreateAccount} title="Criar conta" />
+        <AppButton
+          onPress={handleCreateAccount}
+          title={i18n.t("createAccount")}
+        />
       </View>
 
       <Footer />

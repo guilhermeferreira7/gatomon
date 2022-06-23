@@ -12,6 +12,7 @@ import Footer from "../../../components/Footer";
 import GameInfo from "../../../components/GameInfo";
 import Loading from "../../../components/Loading";
 import getUserLogin from "../../../services/getUserLogin";
+import I18n from "i18n-js";
 
 export default function Collection() {
   const uid = getUserLogin().uid;
@@ -36,7 +37,9 @@ export default function Collection() {
         <Text>
           {item.CatName} {item.CatPowerLevel}
         </Text>
-        <Text>{item.CatType == "Rare" ? "Raro" : "Comum"}</Text>
+        <Text>
+          {item.CatType == "Rare" ? I18n.t("rare") : I18n.t("common")}
+        </Text>
         <AppButton title="Info" onPress={getInfo} />
       </View>
     );

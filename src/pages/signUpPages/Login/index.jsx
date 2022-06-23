@@ -46,7 +46,7 @@ export default function Login({ navigation }) {
         navigation.navigate("Home");
       })
       .catch(() => {
-        Alert.alert("Erro", "Login ou senha invalida", [
+        Alert.alert(i18n.t("fail"), i18n.t("errorLogin"), [
           {
             text: "Ok",
           },
@@ -85,7 +85,7 @@ export default function Login({ navigation }) {
         <View style={styles.inputs}>
           <AppButton
             onPress={() => navigation.navigate("CreateAccount")}
-            title={i18n.t(i18n.t("signUpBtn"))}
+            title={i18n.t("signUpBtn")}
           />
         </View>
       </View>

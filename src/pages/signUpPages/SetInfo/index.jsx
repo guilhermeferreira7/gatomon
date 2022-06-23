@@ -19,6 +19,8 @@ import Loading from "../../../components/Loading";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import I18n from "i18n-js";
+
 export default function SetInfo({ route, navigation }) {
   const { login } = useAuth();
   const app = useContext(AppContext);
@@ -61,21 +63,25 @@ export default function SetInfo({ route, navigation }) {
       <HeaderAlt />
 
       <View style={styles.title}>
-        <Text style={styles.textTitle}>Seja bem vindo {name},</Text>
-        <Text style={styles.textTitle}>termine de configurar sua conta:</Text>
+        <Text style={styles.textTitle}>
+          {I18n.t("welcome")} {name},
+        </Text>
+        <Text style={styles.textTitle}>{I18n.t("finishAcc")}</Text>
       </View>
 
       <View style={styles.info}>
-        <Text style={styles.text}>Nome: {name}</Text>
+        <Text style={styles.text}>
+          {I18n.t("name")} {name}
+        </Text>
         <Text style={styles.text}>Email: {email}</Text>
       </View>
 
       <View style={styles.button}>
-        <AppButton title="Escolha um avatar" />
+        <AppButton title={I18n.t("avatar")} />
       </View>
       <View style={styles.button}>
         <AppButton
-          title="Continuar"
+          title={I18n.t("continue")}
           onPress={() => {
             login(email, password).then((res) => {
               AsyncStorage.removeItem("login");

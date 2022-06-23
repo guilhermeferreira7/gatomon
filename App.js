@@ -17,6 +17,8 @@ import AppContext from "./src/contexts/AppContext";
 import getUserLogin from "./src/services/getUserLogin";
 
 import i18n from "i18n-js";
+import en from "./src/languages/en";
+import pt from "./src/languages/pt";
 
 import * as Localization from "expo-localization";
 
@@ -25,13 +27,12 @@ export default function App() {
   const [logged, setLogged] = useState(false);
 
   i18n.translations = {
-    en: {
-      password: "Password",
-      signUp: "Create Account",
-      signUpBtn: "Sign-up",
-    },
-    pt: { password: "Senha", signUp: "Cadastre-se", signUpBtn: "Cadastrar" },
+    en,
+    pt,
   };
+
+  i18n.locale = Localization.locale;
+  i18n.fallbacks = true;
 
   const app = {
     logged,

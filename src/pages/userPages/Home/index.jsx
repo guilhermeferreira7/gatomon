@@ -8,6 +8,7 @@ import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
 import GameInfo from "../../../components/GameInfo";
 import getUserLogin from "../../../services/getUserLogin";
+import I18n from "i18n-js";
 
 export default function Home({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -28,26 +29,26 @@ export default function Home({ navigation }) {
         </View>
       </Modal>
 
-      <GameInfo />
+      {/* <GameInfo /> */}
 
       <ScrollView>
         <View style={styles.btnList}>
           <View style={styles.btn}>
             <AppButton
               onPress={() => navigation.navigate("Game")}
-              title="Jogar"
+              title={I18n.t("play")}
             />
           </View>
           <View style={styles.btn}>
             <AppButton
               onPress={() => navigation.navigate("Collection")}
-              title="Coleção"
+              title={I18n.t("collection")}
             />
           </View>
           <View style={styles.btn}>
             <AppButton
               onPress={() => navigation.navigate("Store")}
-              title="Loja"
+              title={I18n.t("store")}
             />
           </View>
           <View style={styles.btn}>
