@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import colors from "../../../assets/colors";
+import colors from "../../../../assets/colors";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
@@ -12,7 +12,7 @@ import AppContext from "../../../contexts/AppContext";
 import useAuth from "../../../firebase/hooks/useAuth";
 
 import getUserLogin from "../../../services/getUserLogin";
-import I18n from "i18n-js";
+import { t as translate } from "i18n-js";
 
 export default function Account({ navigation }) {
   const app = useContext(AppContext);
@@ -30,7 +30,7 @@ export default function Account({ navigation }) {
     <View style={styles.container}>
       <Header />
 
-      <Text>{I18n.t("accountInfo")}</Text>
+      <Text>{translate("accountInfo")}</Text>
 
       <AppButton onPress={handleLogout} title="Logout" />
 

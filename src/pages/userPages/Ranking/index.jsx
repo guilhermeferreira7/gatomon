@@ -2,7 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
-import colors from "../../../assets/colors";
+import colors from "../../../../assets/colors";
 
 export default function Ranking() {
   return (

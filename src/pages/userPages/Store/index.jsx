@@ -1,18 +1,13 @@
 import { useState, useEffect } from "react";
 import { Text, View, FlatList, StyleSheet, Image, Alert } from "react-native";
-
 import getUserLogin from "../../../services/getUserLogin";
 import loadCats from "../../../services/loadCats";
-
-import colors from "../../../assets/colors";
-
+import colors from "../../../../assets/colors";
 import Footer from "../../../components/Footer";
-import GameInfo from "../../../components/GameInfo";
 import AppButton from "../../../components/AppButton";
-
 import useList from "../../../firebase/hooks/useList";
 import Loading from "../../../components/Loading";
-import I18n from "i18n-js";
+import { t as translate } from "i18n-js";
 
 export default function Store() {
   const [cats, setCats] = useState([]);
@@ -61,17 +56,17 @@ export default function Store() {
         <Text>
           {item.CatName} {item.CatPowerLevel}
         </Text>
-        <Text>{item.CatType == "Rare" ? "Raro" : "Comum"}</Text>
+        <Text>
+          {item.CatType == "Rare" ? translate("rare") : translate("common")}
+        </Text>
         <Text>Valor: {value}</Text>
-        <AppButton title={I18n.t("buy")} onPress={handleBuy} />
+        <AppButton title={translate("buy")} onPress={handleBuy} />
       </View>
     );
   };
 
   return (
     <View style={styles.container}>
-      {/* <GameInfo /> */}
-
       <FlatList
         style={styles.flatList}
         numColumns={2}

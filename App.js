@@ -17,8 +17,8 @@ import AppContext from "./src/contexts/AppContext";
 import getUserLogin from "./src/services/getUserLogin";
 
 import i18n from "i18n-js";
-import en from "./src/languages/en";
-import pt from "./src/languages/pt";
+import en from "./assets/languages/en";
+import pt from "./assets/languages/pt";
 
 import * as Localization from "expo-localization";
 

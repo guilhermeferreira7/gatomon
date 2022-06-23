@@ -1,18 +1,12 @@
 import { View, StyleSheet, Text, FlatList, Image } from "react-native";
-
 import AppButton from "../../../components/AppButton";
-
 import useList from "../../../firebase/hooks/useList";
 import listToArray from "../../../firebase/services/listToArray";
-
-import colors from "../../../assets/colors";
-
-import { getAuth } from "firebase/auth";
+import colors from "../../../../assets/colors";
 import Footer from "../../../components/Footer";
-import GameInfo from "../../../components/GameInfo";
 import Loading from "../../../components/Loading";
 import getUserLogin from "../../../services/getUserLogin";
-import I18n from "i18n-js";
+import { t as translate } from "i18n-js";
 
 export default function Collection() {
   const uid = getUserLogin().uid;
@@ -38,7 +32,7 @@ export default function Collection() {
           {item.CatName} {item.CatPowerLevel}
         </Text>
         <Text>
-          {item.CatType == "Rare" ? I18n.t("rare") : I18n.t("common")}
+          {item.CatType == "Rare" ? translate("rare") : translate("common")}
         </Text>
         <AppButton title="Info" onPress={getInfo} />
       </View>
@@ -47,8 +41,6 @@ export default function Collection() {
 
   return (
     <View style={styles.container}>
-      {/* <GameInfo /> */}
-
       <FlatList
         style={styles.flatList}
         numColumns={2}

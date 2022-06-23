@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
 import React from "react";
-import colors from "../../assets/colors";
+import colors from "../../../assets/colors";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons";
 

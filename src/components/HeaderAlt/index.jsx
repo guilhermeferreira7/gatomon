@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import catImg from "./Hermeowne.jpg";
-import colors from "../../assets/colors";
+import colors from "../../../assets/colors";
 
 export default function HeaderAlt() {
   return (

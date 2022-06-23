@@ -5,26 +5,17 @@ import {
   StyleSheet,
   Text,
   Alert,
-  Touchable,
   Image,
-  TouchableHighlight,
   TouchableOpacity,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
-import colors from "../../../assets/colors";
-
+import colors from "../../../../assets/colors";
 import HeaderAlt from "../../../components/HeaderAlt";
 import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
-
 import useAuth from "../../../firebase/hooks/useAuth";
-
 import AppContext from "../../../contexts/AppContext";
-
-import getUserLogin from "../../../services/getUserLogin";
-import i18n from "i18n-js";
-
+import i18n, { t as translate } from "i18n-js";
 import brFlag from "./br.png";
 import usFlag from "./us.png";
 
@@ -46,7 +37,7 @@ export default function Login({ navigation }) {
         navigation.navigate("Home");
       })
       .catch(() => {
-        Alert.alert(i18n.t("fail"), i18n.t("errorLogin"), [
+        Alert.alert(translate("fail"), translate("errorLogin"), [
           {
             text: "Ok",
           },
@@ -70,7 +61,7 @@ export default function Login({ navigation }) {
       <View style={styles.textInput}>
         <TextInput
           style={styles.placeholder}
-          placeholder={i18n.t("password")}
+          placeholder={translate("password")}
           onChangeText={(text) => {
             setPassword(text);
           }}
@@ -81,14 +72,16 @@ export default function Login({ navigation }) {
       </View>
 
       <View style={styles.register}>
-        <Text style={styles.text}>{i18n.t("signUp")}</Text>
+        <Text style={styles.text}>{translate("signUp")}</Text>
         <View style={styles.inputs}>
           <AppButton
             onPress={() => navigation.navigate("CreateAccount")}
-            title={i18n.t("signUpBtn")}
+            title={translate("signUpBtn")}
           />
         </View>
       </View>
+
+      <Text style={styles.changeLang}>Mudar idioma/Change language</Text>
 
       <View style={styles.langs}>
         <TouchableOpacity onPress={() => setLang("pt-BR")}>
@@ -133,11 +126,14 @@ const styles = StyleSheet.create({
   },
   langs: {
     flexDirection: "row",
-    marginTop: 10,
   },
   img: {
     margin: 10,
     width: 50,
     height: 50,
+  },
+  changeLang: {
+    fontSize: 20,
+    marginTop: 20,
   },
 });

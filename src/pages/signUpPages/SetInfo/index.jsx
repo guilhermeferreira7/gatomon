@@ -10,7 +10,7 @@ import useList from "../../../firebase/hooks/useList";
 import HeaderAlt from "../../../components/HeaderAlt";
 import Footer from "../../../components/Footer";
 
-import colors from "../../../assets/colors";
+import colors from "../../../../assets/colors";
 import AppButton from "../../../components/AppButton";
 import useAuth from "../../../firebase/hooks/useAuth";
 
@@ -19,7 +19,7 @@ import Loading from "../../../components/Loading";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import I18n from "i18n-js";
+import { t as translate } from "i18n-js";
 
 export default function SetInfo({ route, navigation }) {
   const { login } = useAuth();
@@ -64,24 +64,24 @@ export default function SetInfo({ route, navigation }) {
 
       <View style={styles.title}>
         <Text style={styles.textTitle}>
-          {I18n.t("welcome")} {name},
+          {translate("welcome")} {name},
         </Text>
-        <Text style={styles.textTitle}>{I18n.t("finishAcc")}</Text>
+        <Text style={styles.textTitle}>{translate("finishAcc")}</Text>
       </View>
 
       <View style={styles.info}>
         <Text style={styles.text}>
-          {I18n.t("name")} {name}
+          {translate("name")} {name}
         </Text>
         <Text style={styles.text}>Email: {email}</Text>
       </View>
 
       <View style={styles.button}>
-        <AppButton title={I18n.t("avatar")} />
+        <AppButton title={translate("avatar")} />
       </View>
       <View style={styles.button}>
         <AppButton
-          title={I18n.t("continue")}
+          title={translate("continue")}
           onPress={() => {
             login(email, password).then((res) => {
               AsyncStorage.removeItem("login");

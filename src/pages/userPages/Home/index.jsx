@@ -1,14 +1,10 @@
 import { View, ScrollView, StyleSheet, Modal, Text } from "react-native";
 import { useState } from "react";
-
-import colors from "../../../assets/colors";
-
+import colors from "../../../../assets/colors";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
-import GameInfo from "../../../components/GameInfo";
-import getUserLogin from "../../../services/getUserLogin";
-import I18n from "i18n-js";
+import { t as translate } from "i18n-js";
 
 export default function Home({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -29,26 +25,24 @@ export default function Home({ navigation }) {
         </View>
       </Modal>
 
-      {/* <GameInfo /> */}
-
       <ScrollView>
         <View style={styles.btnList}>
           <View style={styles.btn}>
             <AppButton
               onPress={() => navigation.navigate("Game")}
-              title={I18n.t("play")}
+              title={translate("play")}
             />
           </View>
           <View style={styles.btn}>
             <AppButton
               onPress={() => navigation.navigate("Collection")}
-              title={I18n.t("collection")}
+              title={translate("collection")}
             />
           </View>
           <View style={styles.btn}>
             <AppButton
               onPress={() => navigation.navigate("Store")}
-              title={I18n.t("store")}
+              title={translate("store")}
             />
           </View>
           <View style={styles.btn}>
