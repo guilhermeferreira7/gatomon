@@ -1,12 +1,15 @@
 import { View, ScrollView, StyleSheet, Modal, Text } from "react-native";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import colors from "../../../../assets/colors";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
-import { t as translate } from "i18n-js";
+import i18n, { t as translate } from "i18n-js";
+import AppContext from "../../../contexts/AppContext";
 
 export default function Home({ navigation }) {
+  const app = useContext(AppContext);
+  i18n.locale = app.lang;
   const [modalVisible, setModalVisible] = useState(false);
 
   return (

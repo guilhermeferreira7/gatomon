@@ -25,10 +25,11 @@ import * as Localization from "expo-localization";
 export default function App() {
   const firebaseApp = useFirebase(firebaseConfig);
   const [logged, setLogged] = useState(false);
+  const [lang, setLang] = useState("pt-BR");
 
   i18n.translations = {
-    en,
     pt,
+    en,
   };
 
   i18n.locale = Localization.locale;
@@ -37,6 +38,8 @@ export default function App() {
   const app = {
     logged,
     setLogged,
+    lang,
+    setLang,
   };
 
   useEffect(() => {

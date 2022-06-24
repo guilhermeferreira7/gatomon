@@ -20,10 +20,12 @@ export default function Store() {
 
   useEffect(() => {
     getCats();
-    setUid(getUserLogin().uid);
+    getUserLogin().then((res) => {
+      setUid(JSON.parse(res).uid);
+    });
   }, []);
 
-  if (cats.length === 0) return <Loading>loading...</Loading>;
+  if (cats.length === 0) return <Loading />;
 
   const Card = ({ item }) => {
     const value = item.CatType == "Rare" ? 1000 : 300;

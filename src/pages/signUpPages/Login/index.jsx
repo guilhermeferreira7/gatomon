@@ -26,7 +26,7 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState("");
   const [lang, setLang] = useState("pt-BR");
 
-  i18n.locale = lang;
+  i18n.locale = app.lang;
 
   const handleLogin = () => {
     login(email, password)
@@ -84,10 +84,18 @@ export default function Login({ navigation }) {
       <Text style={styles.changeLang}>Mudar idioma/Change language</Text>
 
       <View style={styles.langs}>
-        <TouchableOpacity onPress={() => setLang("pt-BR")}>
+        <TouchableOpacity
+          onPress={() => {
+            app.setLang("pt-BR");
+          }}
+        >
           <Image style={styles.img} source={brFlag} />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => setLang("en-US")}>
+        <TouchableOpacity
+          onPress={() => {
+            app.setLang("en-US");
+          }}
+        >
           <Image style={styles.img} source={usFlag} />
         </TouchableOpacity>
       </View>

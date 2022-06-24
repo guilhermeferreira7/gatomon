@@ -1,21 +1,17 @@
 import { useContext, useEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import colors from "../../../../assets/colors";
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
-
 import AppContext from "../../../contexts/AppContext";
-
 import useAuth from "../../../firebase/hooks/useAuth";
-
-import getUserLogin from "../../../services/getUserLogin";
-import { t as translate } from "i18n-js";
+import i18n, { t as translate } from "i18n-js";
 
 export default function Account({ navigation }) {
   const app = useContext(AppContext);
+  i18n.locale = app.lang;
   const { logout } = useAuth();
 
   const handleLogout = () => {

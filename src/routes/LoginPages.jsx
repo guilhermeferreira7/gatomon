@@ -14,7 +14,7 @@ export default function LoginPages() {
         name="CreateAccount"
         component={CreateAccount}
         options={{
-          title: I18n.t("createAccount"),
+          title: "Criar conta",
         }}
       />
       <Stack.Screen
@@ -22,7 +22,7 @@ export default function LoginPages() {
         component={SetInfo}
         options={{
           headerBackVisible: false,
-          title: I18n.t("createAccount"),
+          title: "Criar conta",
         }}
       />
     </Stack.Group>

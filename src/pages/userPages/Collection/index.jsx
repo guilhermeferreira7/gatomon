@@ -1,4 +1,5 @@
 import { View, StyleSheet, Text, FlatList, Image } from "react-native";
+import { useState, useContext } from "react";
 import AppButton from "../../../components/AppButton";
 import useList from "../../../firebase/hooks/useList";
 import listToArray from "../../../firebase/services/listToArray";
@@ -6,14 +7,22 @@ import colors from "../../../../assets/colors";
 import Footer from "../../../components/Footer";
 import Loading from "../../../components/Loading";
 import getUserLogin from "../../../services/getUserLogin";
-import { t as translate } from "i18n-js";
+import i18n, { t as translate } from "i18n-js";
+import AppContext from "../../../contexts/AppContext";
 
 export default function Collection() {
-  const uid = getUserLogin().uid;
-  let cards = useList(uid + "/cards/").data;
-  if (!cards) return <Loading />;
+  const app = useContext(AppContext);
+  i18n.locale = app.lang;
+  const [uid, setUid] = useState("");
 
-  cards = listToArray(cards);
+  getUserLogin().then((res) => {
+    setUid(JSON.parse(res).uid);
+  });
+
+  const cards = useList(uid + "/cards/").data;
+
+  if (!cards) return <Loading />;
+  const cardsArray = listToArray(cards);
 
   const Card = ({ item }) => {
     const getInfo = () => {
@@ -44,7 +53,7 @@ export default function Collection() {
       <FlatList
         style={styles.flatList}
         numColumns={2}
-        data={cards}
+        data={cardsArray}
         renderItem={Card}
         keyExtractor={(item, index) => index}
       />
