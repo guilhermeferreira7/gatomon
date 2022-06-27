@@ -13,6 +13,21 @@
   - Tela com ranking de usuários (por quantidade de cartas e por poder total)
   - Tela principal com algumas informações do usuário e botões para navegação
 
+### To do
+
+- [x] Login
+- [x] Criar/editar conta para diferentes usuários
+- [x] Listar informações das cards
+- [x] Editar usuário
+- [ ] Adicionar todos os atributos dos usuários (cards, moedas, funções de controle dos atributos) 
+- [ ] Adicionar e mudar foto de perfil dos usuários
+- [x] Listar coleção
+- [x] Acesso a API
+- [ ] Forma de adquirir moeda virtual
+- [x] Loja com alguns itens aleatórios da API
+- [ ] Mudar itens da loja de tempos em tempos
+- [ ] Página com ranking
+
 ## Avaliação Final
  - [x] Correções AA2 (3)
  - [ ] Recurso inédito (2)
@@ -56,20 +71,6 @@ Pretendo criar algum jogo muito simples para conseguir coletar moedas para o apl
 - Até 20/06: Funcionalidade de ranking
 - Até 27/06: Se possível, fazer a funcionalidade do jogo, se não, implementar outras funcionalidades e polir mais o que já está implementado.
 
-## To do
-
-- [x] Login
-- [x] Criar/editar conta para diferentes usuários
-- [x] Listar informações das cards
-- [x] Editar usuário
-- [ ] Adicionar todos os atributos dos usuários (cards, moedas, funções de controle dos atributos) 
-- [ ] Adicionar e mudar foto de perfil dos usuários
-- [x] Listar coleção
-- [x] Acesso a API
-- [ ] Forma de adquirir moeda virtual
-- [x] Loja com alguns itens aleatórios da API
-- [ ] Mudar itens da loja de tempos em tempos
-- [ ] Página com ranking
 
 ## AA 1
 
