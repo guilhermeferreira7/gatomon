@@ -24,7 +24,6 @@ export default function Login({ navigation }) {
   const { login } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [lang, setLang] = useState("pt-BR");
 
   i18n.locale = app.lang;
 

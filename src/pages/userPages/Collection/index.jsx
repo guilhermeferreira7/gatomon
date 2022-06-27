@@ -1,36 +1,79 @@
-import { View, StyleSheet, Text, FlatList, Image } from "react-native";
-import { useState, useContext } from "react";
+import {
+  View,
+  StyleSheet,
+  Text,
+  FlatList,
+  Image,
+  Modal,
+  TouchableOpacity,
+} from "react-native";
+import { useState } from "react";
 import AppButton from "../../../components/AppButton";
 import useList from "../../../firebase/hooks/useList";
 import listToArray from "../../../firebase/services/listToArray";
 import colors from "../../../../assets/colors";
 import Footer from "../../../components/Footer";
 import Loading from "../../../components/Loading";
-import getUserLogin from "../../../services/getUserLogin";
-import i18n, { t as translate } from "i18n-js";
-import AppContext from "../../../contexts/AppContext";
+import { t as translate } from "i18n-js";
+import { getAuth } from "firebase/auth";
+import { AntDesign } from "@expo/vector-icons";
 
 export default function Collection() {
-  const app = useContext(AppContext);
-  i18n.locale = app.lang;
-  const [uid, setUid] = useState("");
-
-  getUserLogin().then((res) => {
-    setUid(JSON.parse(res).uid);
-  });
-
-  const cards = useList(uid + "/cards/").data;
-
-  if (!cards) return <Loading />;
-  const cardsArray = listToArray(cards);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [cat, setCat] = useState({});
+  const uid = getAuth().currentUser.uid;
+  const cards = useList(`${uid}/cards/`);
+  if (!cards.data) return <Loading />;
+  const data = listToArray(cards.data);
 
   const Card = ({ item }) => {
     const getInfo = () => {
-      console.log("info");
+      setCat(item);
+      setModalVisible(!modalVisible);
     };
 
     return (
       <View style={[styles.card, item.CatType === "Rare" && styles.rareCard]}>
+        <Modal visible={modalVisible} transparent={true} animationType="fade">
+          <View
+            style={[
+              styles.modalContainer,
+              cat.CatType === "Rare" && styles.rareCard,
+            ]}
+          >
+            <TouchableOpacity
+              style={styles.closeBtn}
+              onPress={() => setModalVisible(!modalVisible)}
+            >
+              <AntDesign name="close" size={28} color="black" />
+            </TouchableOpacity>
+            <View style={styles.catInfoContainer}>
+              <Image
+                source={{
+                  uri: cat.CatImage,
+                }}
+                style={styles.image}
+              />
+              <Text style={styles.catInfo}>Name: {cat.CatName}</Text>
+              <Text style={styles.catInfo}>
+                Description: {cat.CatDescription}
+              </Text>
+              <Text style={styles.catInfo}>
+                Personality: {cat.CatPersonality}
+              </Text>
+              <Text style={styles.catInfo}>Power: {cat.CatPowerLevel}</Text>
+              <Text style={styles.catInfo}>Type: {cat.CatType}</Text>
+              <Text style={styles.catInfo}>Memento: {cat.Memento}</Text>
+              <Image
+                source={{
+                  uri: cat.MementoImage,
+                }}
+                style={styles.image}
+              />
+            </View>
+          </View>
+        </Modal>
+
         <Image
           source={{
             uri: item.CatImage,
@@ -53,7 +96,7 @@ export default function Collection() {
       <FlatList
         style={styles.flatList}
         numColumns={2}
-        data={cardsArray}
+        data={data}
         renderItem={Card}
         keyExtractor={(item, index) => index}
       />
@@ -101,5 +144,31 @@ const styles = StyleSheet.create({
   text: {
     alignSelf: "center",
     fontSize: 16,
+  },
+  modalContainer: {
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: colors.commonCard,
+    shadowColor: "#fff",
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    width: 300,
+    height: 400,
+    margin: 100,
+  },
+  closeBtn: {
+    position: "absolute",
+    right: 5,
+    top: 5,
+  },
+  catInfoContainer: {
+    alignItems: "center",
+  },
+  catInfo: {
+    marginBottom: 5,
+    fontSize: 18,
   },
 });
