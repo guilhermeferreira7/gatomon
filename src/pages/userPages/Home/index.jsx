@@ -10,23 +10,9 @@ import AppContext from "../../../contexts/AppContext";
 export default function Home({ navigation }) {
   const app = useContext(AppContext);
   i18n.locale = app.lang;
-  const [modalVisible, setModalVisible] = useState(false);
-
   return (
     <View style={styles.container}>
       <Header />
-
-      <Modal animationType="fade" visible={modalVisible} transparent={true}>
-        <View style={styles.modalContainer}>
-          <Text>Modal content</Text>
-          <AppButton
-            title="Fechar"
-            onPress={() => {
-              setModalVisible(!modalVisible);
-            }}
-          />
-        </View>
-      </Modal>
 
       <ScrollView>
         <View style={styles.btnList}>
@@ -54,14 +40,6 @@ export default function Home({ navigation }) {
               title="Ranking"
             />
           </View>
-          <View style={styles.btn}>
-            <AppButton
-              title="Teste Modal"
-              onPress={() => {
-                setModalVisible(!modalVisible);
-              }}
-            />
-          </View>
         </View>
       </ScrollView>
 
@@ -81,19 +59,5 @@ const styles = StyleSheet.create({
   },
   btn: {
     margin: 10,
-  },
-  modalContainer: {
-    alignSelf: "center",
-    alignItems: "center",
-    justifyContent: "center",
-    backgroundColor: "#ddd",
-    shadowColor: "#fff",
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    width: 200,
-    height: 200,
-    margin: 200,
   },
 });
