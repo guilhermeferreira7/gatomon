@@ -60,6 +60,7 @@ Pretendo criar algum jogo muito simples para conseguir coletar moedas para o apl
 
 - [x] Login
 - [x] Criar/editar conta para diferentes usuários
+- [x] Listar informações das cards
 - [ ] Editar usuário
 - [ ] Adicionar todos os atributos dos usuários (cards, moedas, funções de controle dos atributos) 
 - [ ] Adicionar e mudar foto de perfil dos usuários
