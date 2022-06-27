@@ -25,7 +25,6 @@
 - [x] Acesso a API
 - [ ] Forma de adquirir moeda virtual
 - [x] Loja com alguns itens aleatórios da API
-- [ ] Mudar itens da loja de tempos em tempos
 - [ ] Página com ranking
 
 ## Avaliação Final
