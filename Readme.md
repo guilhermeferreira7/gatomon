@@ -16,7 +16,7 @@
 ## Avaliação Final
  - [x] Correções AA2 (3)
  - [ ] Recurso inédito (2)
- - [ ] Conclusão outros requisitos (2)
+ - [x] Conclusão outros requisitos (2)
  - [x] Tradução i18n (2)
  - [x] Apk (1)
 
