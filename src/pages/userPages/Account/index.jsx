@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Text, View, StyleSheet, TextInput } from "react-native";
+import { Text, View, StyleSheet, TextInput, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import colors from "../../../../assets/colors";
 import Footer from "../../../components/Footer";
@@ -7,7 +7,7 @@ import AppButton from "../../../components/AppButton";
 import AppContext from "../../../contexts/AppContext";
 import useAuth from "../../../firebase/hooks/useAuth";
 import i18n, { t as translate } from "i18n-js";
-import { getAuth } from "firebase/auth";
+import { getAuth, updateEmail, updateProfile } from "firebase/auth";
 
 export default function Account({ navigation }) {
   const user = getAuth().currentUser;
@@ -18,8 +18,25 @@ export default function Account({ navigation }) {
   i18n.locale = app.lang;
   const { logout } = useAuth();
 
-  const changeName = () => {};
-  const changeEmail = () => {};
+  const changeName = () => {
+    Alert.alert("Confirmar", "Quer mesmo mudar o nome?", [
+      {
+        text: "Não",
+      },
+      {
+        text: "Sim",
+        onPress: () => updateProfile(user, { displayName: name }),
+      },
+    ]);
+  };
+  const changeEmail = () => {
+    Alert.alert("Confirmar", "Quer mesmo mudar o email?", [
+      {
+        text: "Não",
+      },
+      { text: "Sim", onPress: () => updateEmail(user, email) },
+    ]);
+  };
 
   const handleLogout = () => {
     logout();

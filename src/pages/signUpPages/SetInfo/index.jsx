@@ -1,5 +1,14 @@
 import { useState, useContext } from "react";
-import { View, Text, StyleSheet, Modal } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  Modal,
+  TouchableOpacity,
+  FlatList,
+  Image,
+  Alert,
+} from "react-native";
 
 import { getAuth } from "firebase/auth";
 
@@ -19,12 +28,15 @@ import Loading from "../../../components/Loading";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import { AntDesign } from "@expo/vector-icons";
+
 import { t as translate } from "i18n-js";
 
 export default function SetInfo({ route, navigation }) {
   const { login } = useAuth();
   const app = useContext(AppContext);
   const [modalVisible, setModalVisible] = useState(false);
+  const [data, setData] = useState([]);
   const user = getAuth().currentUser;
   const email = user.email;
   const name = user.displayName;
@@ -32,31 +44,64 @@ export default function SetInfo({ route, navigation }) {
   const uid = getAuth().currentUser.uid;
   const cards = useList(uid + "/cards/");
 
-  console.log(password);
+  const getCats = () => {
+    const cats = [];
+    for (let i = 1; i <= 4; i++) {
+      api.get(`/cats/${i}`).then((res) => {
+        cats.push(res.data);
+        setData(cats);
+      });
+    }
+  };
 
-  const cats = [];
+  const Card = ({ item }) => {
+    const selectCat = () => {
+      Alert.alert(
+        "Confirmar",
+        `Quer escolher ${item.CatName} como gatomon inicial?`,
+        [
+          {
+            text: "Não",
+          },
+          {
+            text: "Sim",
+            onPress: cards.create(item),
+          },
+        ]
+      );
+    };
 
-  for (let i = 1; i <= 4; i++) {
-    api.get(`/cats/${i}`).then((res) => {
-      cats.push(res.data);
-    });
-  }
-
-  cats.forEach((cat) => {
-    console.log(cat);
-  });
+    return (
+      <View>
+        <TouchableOpacity style={styles.cat} onPress={selectCat}>
+          <Image
+            source={{
+              uri: item.CatImage,
+            }}
+            style={styles.image}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   return (
     <View style={styles.container}>
       <Modal animationType="fade" visible={modalVisible} transparent={true}>
         <View style={styles.modalContainer}>
-          <Text>Modal content</Text>
-          <AppButton
-            title="Fechar"
-            onPress={() => {
-              setModalVisible(!modalVisible);
-            }}
+          <FlatList
+            style={styles.flatList}
+            numColumns={2}
+            data={data}
+            renderItem={Card}
+            keyExtractor={(item, index) => index}
           />
+          <TouchableOpacity
+            style={styles.closeBtn}
+            onPress={() => setModalVisible(!modalVisible)}
+          >
+            <AntDesign name="close" size={28} color="black" />
+          </TouchableOpacity>
         </View>
       </Modal>
 
@@ -79,6 +124,17 @@ export default function SetInfo({ route, navigation }) {
       <View style={styles.button}>
         <AppButton title={translate("avatar")} />
       </View>
+
+      <View style={styles.button}>
+        <AppButton
+          title="Starter cat"
+          onPress={() => {
+            getCats();
+            setModalVisible(!modalVisible);
+          }}
+        />
+      </View>
+
       <View style={styles.button}>
         <AppButton
           title={translate("continue")}
@@ -121,6 +177,34 @@ const styles = StyleSheet.create({
   },
   inputField: {},
   button: {
+    margin: 10,
+  },
+  modalContainer: {
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: colors.commonCard,
+    shadowColor: "#fff",
+    shadowOffset: {
+      width: 0,
+      height: 10,
+    },
+    width: 300,
+    height: 300,
+    margin: 200,
+    paddingTop: 40,
+  },
+  closeBtn: {
+    position: "absolute",
+    right: 5,
+    top: 5,
+  },
+  image: {
+    width: 114,
+    height: 80,
+    marginBottom: 5,
+  },
+  cat: {
     margin: 10,
   },
 });
