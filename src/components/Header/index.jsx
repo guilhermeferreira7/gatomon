@@ -1,21 +1,20 @@
-import { View, Text, StyleSheet, TouchableHighlight } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import React from "react";
 import colors from "../../../assets/colors";
-import { useNavigation } from "@react-navigation/native";
-import { FontAwesome } from "@expo/vector-icons";
+import { getAuth } from "firebase/auth";
 
 export default function Header() {
-  const navigation = useNavigation();
-  const handleProfile = () => {
-    navigation.navigate("Account");
-  };
+  const user = getAuth().currentUser;
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Gatomon</Text>
 
-      <TouchableHighlight onPress={handleProfile}>
-        <FontAwesome name="user-circle-o" size={60} color={colors.primary} />
-      </TouchableHighlight>
+      <Image
+        source={{
+          uri: user.photoURL,
+        }}
+        style={styles.image}
+      />
     </View>
   );
 }
@@ -23,7 +22,7 @@ export default function Header() {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: colors.background,
-    padding: 30,
+    padding: 20,
     flexDirection: "row",
   },
   text: {
@@ -34,5 +33,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     flex: 1,
     color: colors.primary,
+  },
+  image: {
+    width: 114,
+    height: 80,
+    marginBottom: 5,
   },
 });

@@ -17,6 +17,7 @@ import Loading from "../../../components/Loading";
 import { t as translate } from "i18n-js";
 import { getAuth } from "firebase/auth";
 import { AntDesign } from "@expo/vector-icons";
+import Info from "../../../components/Info";
 
 export default function Collection() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -93,6 +94,8 @@ export default function Collection() {
 
   return (
     <View style={styles.container}>
+      <Info />
+
       <FlatList
         style={styles.flatList}
         numColumns={2}

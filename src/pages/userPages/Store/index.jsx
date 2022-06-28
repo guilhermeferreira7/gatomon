@@ -8,8 +8,13 @@ import AppButton from "../../../components/AppButton";
 import useList from "../../../firebase/hooks/useList";
 import Loading from "../../../components/Loading";
 import { t as translate } from "i18n-js";
+import Info from "../../../components/Info";
+import useReference from "../../../firebase/hooks/useReference";
+import { getAuth } from "firebase/auth";
 
 export default function Store() {
+  const user = getAuth().currentUser;
+  const [coins, setCoins] = useReference(user.uid + "/coins/");
   const [cats, setCats] = useState([]);
   const [uid, setUid] = useState("");
   const cards = useList(uid + "/cards/");
@@ -31,10 +36,27 @@ export default function Store() {
     const value = item.CatType == "Rare" ? 1000 : 300;
 
     const buy = () => {
-      cards.create(item);
+      if (coins < value) {
+        Alert.alert(
+          "Erro",
+          "Não é possível efetuar a compra, saldo insuficiente",
+          [{ text: "ok" }]
+        );
+      } else {
+        setCoins(coins - value);
+        cards.create(item);
+      }
     };
 
     const handleBuy = () => {
+      if (coins < value) {
+        Alert.alert(
+          "Erro",
+          "Não é possível efetuar a compra, saldo insuficiente",
+          [{ text: "ok" }]
+        );
+        return;
+      }
       Alert.alert(
         "Confirmar",
         `Quer mesmo comprar a carta ${item.CatName} por $ ${value}`,
@@ -69,6 +91,7 @@ export default function Store() {
 
   return (
     <View style={styles.container}>
+      <Info />
       <FlatList
         style={styles.flatList}
         numColumns={2}

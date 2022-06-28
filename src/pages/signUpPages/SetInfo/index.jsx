@@ -9,27 +9,18 @@ import {
   Image,
   Alert,
 } from "react-native";
-
-import { getAuth } from "firebase/auth";
-
+import { getAuth, updateProfile } from "firebase/auth";
 import api from "../../../services/api";
-
 import useList from "../../../firebase/hooks/useList";
-
 import HeaderAlt from "../../../components/HeaderAlt";
 import Footer from "../../../components/Footer";
-
 import colors from "../../../../assets/colors";
 import AppButton from "../../../components/AppButton";
 import useAuth from "../../../firebase/hooks/useAuth";
-
 import AppContext from "../../../contexts/AppContext";
 import Loading from "../../../components/Loading";
-
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import { AntDesign } from "@expo/vector-icons";
-
 import { t as translate } from "i18n-js";
 
 export default function SetInfo({ route, navigation }) {
@@ -42,16 +33,16 @@ export default function SetInfo({ route, navigation }) {
   const name = user.displayName;
   const password = route.params.password;
   const uid = getAuth().currentUser.uid;
+  const [coins, setCoins] = useReference(uid + "/coins/");
   const cards = useList(uid + "/cards/");
 
-  const getCats = () => {
+  const loadCats = async () => {
     const cats = [];
     for (let i = 1; i <= 4; i++) {
-      api.get(`/cats/${i}`).then((res) => {
-        cats.push(res.data);
-        setData(cats);
-      });
+      const cat = await api.get(`/cats/${i}`);
+      cats.push(cat.data);
     }
+    setData(cats);
   };
 
   const Card = ({ item }) => {
@@ -65,7 +56,12 @@ export default function SetInfo({ route, navigation }) {
           },
           {
             text: "Sim",
-            onPress: cards.create(item),
+            onPress: () => {
+              cards.create(item);
+              updateProfile(user, { photoURL: item.CatImage }).then(() => {
+                setModalVisible(!modalVisible);
+              });
+            },
           },
         ]
       );
@@ -90,7 +86,6 @@ export default function SetInfo({ route, navigation }) {
       <Modal animationType="fade" visible={modalVisible} transparent={true}>
         <View style={styles.modalContainer}>
           <FlatList
-            style={styles.flatList}
             numColumns={2}
             data={data}
             renderItem={Card}
@@ -122,14 +117,10 @@ export default function SetInfo({ route, navigation }) {
       </View>
 
       <View style={styles.button}>
-        <AppButton title={translate("avatar")} />
-      </View>
-
-      <View style={styles.button}>
         <AppButton
           title="Starter cat"
           onPress={() => {
-            getCats();
+            loadCats();
             setModalVisible(!modalVisible);
           }}
         />
@@ -140,6 +131,7 @@ export default function SetInfo({ route, navigation }) {
           title={translate("continue")}
           onPress={() => {
             login(email, password).then((res) => {
+              setCoins(2000);
               AsyncStorage.removeItem("login");
               AsyncStorage.setItem("login", JSON.stringify(res.user));
               app.setLogged(true);

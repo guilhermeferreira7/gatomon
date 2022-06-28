@@ -22,6 +22,7 @@ export default en = {
 
   //account
   accountInfo: "Account info",
+  profile: "Open account",
 
   //collection
   rare: "Rare",

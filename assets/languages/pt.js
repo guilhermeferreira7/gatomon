@@ -22,6 +22,7 @@ export default pt = {
 
   //account
   accountInfo: "Informações da conta",
+  profile: "Ver perfil",
 
   //collection
   rare: "Raro",
