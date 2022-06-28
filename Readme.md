@@ -19,17 +19,16 @@
 - [x] Criar/editar conta para diferentes usuários
 - [x] Listar informações das cards
 - [x] Editar usuário
-- [ ] Adicionar todos os atributos dos usuários (cards, moedas, funções de controle dos atributos) 
-- [ ] Adicionar e mudar foto de perfil dos usuários
+- [x] Adicionar todos os atributos dos usuários (cards, moedas, funções de controle dos atributos) 
+- [x] Adicionar e mudar foto de perfil dos usuários
 - [x] Listar coleção
 - [x] Acesso a API
-- [ ] Forma de adquirir moeda virtual
+- [x] Forma de adquirir moeda virtual
 - [x] Loja com alguns itens aleatórios da API
-- [ ] Página com ranking
 
 ## Avaliação Final
  - [x] Correções AA2 (3)
- - [ ] Recurso inédito (2)
+ - [x] Recurso inédito (2)
  - [x] Conclusão outros requisitos (2)
  - [x] Tradução i18n (2)
  - [x] Apk (1)
