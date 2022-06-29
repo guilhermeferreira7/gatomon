@@ -65,6 +65,7 @@ export default function Login({ navigation }) {
       </View>
       <View style={styles.textInput}>
         <TextInput
+          secureTextEntry={true}
           style={styles.placeholder}
           placeholder={translate("password")}
           onChangeText={(text) => {

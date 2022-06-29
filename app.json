@@ -19,7 +19,7 @@
     },
     "android": {
       "package": "com.ferreira.gatomon",
-      "versionCode": 2,
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptative-icon.png",
         "backgroundColor": "#FFFFFF"
