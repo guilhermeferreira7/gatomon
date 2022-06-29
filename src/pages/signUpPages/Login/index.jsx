@@ -9,13 +9,19 @@ import {
   TouchableOpacity,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import colors from "../../../../assets/colors";
+
 import HeaderAlt from "../../../components/HeaderAlt";
 import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
+
 import useAuth from "../../../firebase/hooks/useAuth";
+
 import AppContext from "../../../contexts/AppContext";
+
 import i18n, { t as translate } from "i18n-js";
+
 import brFlag from "./br.png";
 import usFlag from "./us.png";
 

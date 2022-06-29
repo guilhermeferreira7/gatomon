@@ -1,5 +1,6 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+
 import * as WebBrowser from "expo-web-browser";
 
 export default function Footer() {

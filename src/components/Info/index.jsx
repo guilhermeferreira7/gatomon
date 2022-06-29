@@ -1,5 +1,7 @@
 import { View, Text, StyleSheet } from "react-native";
 
+import Loading from "../Loading";
+
 import colors from "../../../assets/colors";
 
 import { getAuth } from "firebase/auth";
@@ -7,7 +9,6 @@ import { getAuth } from "firebase/auth";
 import useReference from "../../firebase/hooks/useReference";
 import useList from "../../firebase/hooks/useList";
 import listToArray from "../../firebase/services/listToArray";
-import Loading from "../Loading";
 
 export default function Info() {
   const user = getAuth().currentUser;

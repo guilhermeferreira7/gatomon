@@ -11,15 +11,21 @@ import {
   Image,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import colors from "../../../../assets/colors";
+
 import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
+
 import AppContext from "../../../contexts/AppContext";
-import useAuth from "../../../firebase/hooks/useAuth";
-import i18n, { t as translate } from "i18n-js";
+
 import { getAuth, updateEmail, updateProfile } from "firebase/auth";
+import useAuth from "../../../firebase/hooks/useAuth";
+
 import api from "../../../services/api";
+
 import { AntDesign } from "@expo/vector-icons";
+import i18n, { t as translate } from "i18n-js";
 
 export default function Account({ navigation }) {
   const [modalVisible, setModalVisible] = useState(false);
@@ -43,23 +49,23 @@ export default function Account({ navigation }) {
   };
 
   const changeName = () => {
-    Alert.alert("Confirmar", "Quer mesmo mudar o nome?", [
+    Alert.alert(translate("confirm"), translate("changeNameConfirm"), [
       {
-        text: "Não",
+        text: translate("no"),
       },
       {
-        text: "Sim",
+        text: translate("yes"),
         onPress: () => updateProfile(user, { displayName: name }),
       },
     ]);
   };
 
   const changeEmail = () => {
-    Alert.alert("Confirmar", "Quer mesmo mudar o email?", [
+    Alert.alert(translate("confirm"), translate("changeEmailConfirm"), [
       {
-        text: "Não",
+        text: translate("no"),
       },
-      { text: "Sim", onPress: () => updateEmail(user, email) },
+      { text: translate("yes"), onPress: () => updateEmail(user, email) },
     ]);
   };
 
@@ -139,7 +145,7 @@ export default function Account({ navigation }) {
 
         <View style={{ marginTop: 10 }}>
           <AppButton
-            title="Mudar avatar"
+            title={translate("setAvatar")}
             onPress={() => {
               loadCats();
               setModalVisible(!modalVisible);
@@ -157,7 +163,7 @@ export default function Account({ navigation }) {
           }}
         />
       </View>
-      <AppButton title="Mudar nome" onPress={changeName} />
+      <AppButton title={translate("setName")} onPress={changeName} />
 
       <View style={styles.textInput}>
         <TextInput
@@ -168,7 +174,7 @@ export default function Account({ navigation }) {
           }}
         />
       </View>
-      <AppButton title="Mudar email" onPress={changeEmail} />
+      <AppButton title={translate("setEmail")} onPress={changeEmail} />
 
       <Footer />
     </View>

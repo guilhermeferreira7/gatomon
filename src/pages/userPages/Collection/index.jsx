@@ -8,16 +8,22 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useState } from "react";
+
 import AppButton from "../../../components/AppButton";
-import useList from "../../../firebase/hooks/useList";
-import listToArray from "../../../firebase/services/listToArray";
-import colors from "../../../../assets/colors";
 import Footer from "../../../components/Footer";
 import Loading from "../../../components/Loading";
-import { t as translate } from "i18n-js";
-import { getAuth } from "firebase/auth";
-import { AntDesign } from "@expo/vector-icons";
 import Info from "../../../components/Info";
+
+import { getAuth } from "firebase/auth";
+
+import useList from "../../../firebase/hooks/useList";
+import listToArray from "../../../firebase/services/listToArray";
+
+import colors from "../../../../assets/colors";
+
+import { t as translate } from "i18n-js";
+
+import { AntDesign } from "@expo/vector-icons";
 
 export default function Collection() {
   const [modalVisible, setModalVisible] = useState(false);

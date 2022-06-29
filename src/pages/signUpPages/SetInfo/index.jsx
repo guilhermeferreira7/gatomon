@@ -9,18 +9,26 @@ import {
   Image,
   Alert,
 } from "react-native";
-import { getAuth, updateProfile } from "firebase/auth";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import api from "../../../services/api";
+
+import { getAuth, updateProfile } from "firebase/auth";
+
 import useList from "../../../firebase/hooks/useList";
+import useAuth from "../../../firebase/hooks/useAuth";
+
 import HeaderAlt from "../../../components/HeaderAlt";
 import Footer from "../../../components/Footer";
-import colors from "../../../../assets/colors";
 import AppButton from "../../../components/AppButton";
-import useAuth from "../../../firebase/hooks/useAuth";
-import AppContext from "../../../contexts/AppContext";
 import Loading from "../../../components/Loading";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+
+import colors from "../../../../assets/colors";
+
+import AppContext from "../../../contexts/AppContext";
+
 import { AntDesign } from "@expo/vector-icons";
+
 import { t as translate } from "i18n-js";
 
 export default function SetInfo({ route, navigation }) {

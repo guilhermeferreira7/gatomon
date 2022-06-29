@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { TextInput, View, StyleSheet, Alert } from "react-native";
+
 import { updateProfile } from "firebase/auth";
+
 import colors from "../../../../assets/colors";
+
 import HeaderAlt from "../../../components/HeaderAlt";
 import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
+
 import { createUser } from "../../../firebase/services/userSettings";
 import formatFirebaseError from "../../../firebase/services/formatFirebaseError";
+
 import { t as translate } from "i18n-js";
 
 export default function CreateAccount({ navigation }) {

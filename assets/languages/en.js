@@ -12,17 +12,25 @@ export default en = {
   // set info
   welcome: "Welcome",
   finishAcc: "Finish setting up your account:",
-  avatar: "Choose an avatar",
   continue: "Continue",
 
   // home
   play: "Play",
   collection: "Collection",
   store: "Store",
+  addCoins: "Add coins",
 
   //account
   accountInfo: "Account info",
   profile: "Open account",
+  setAvatar: "Set avatar",
+  setName: "Set name",
+  setEmail: "Set email",
+  confirm: "Confirm",
+  changeNameConfirm: "Change name?",
+  changeEmailConfirm: "Change email?",
+  yes: "Yes",
+  no: "No",
 
   //collection
   rare: "Rare",
@@ -30,6 +38,9 @@ export default en = {
 
   //store
   buy: "Buy",
+  buyConfirm: "Buy card",
+  value: "value",
+  insufficientFunds: "Insufficient funds",
 
   //errors
   fail: "Error",

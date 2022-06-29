@@ -1,16 +1,22 @@
 import { useState, useEffect } from "react";
 import { Text, View, FlatList, StyleSheet, Image, Alert } from "react-native";
+
 import getUserLogin from "../../../services/getUserLogin";
 import loadCats from "../../../services/loadCats";
+
 import colors from "../../../../assets/colors";
+
 import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
-import useList from "../../../firebase/hooks/useList";
 import Loading from "../../../components/Loading";
-import { t as translate } from "i18n-js";
 import Info from "../../../components/Info";
-import useReference from "../../../firebase/hooks/useReference";
+
 import { getAuth } from "firebase/auth";
+
+import useList from "../../../firebase/hooks/useList";
+import useReference from "../../../firebase/hooks/useReference";
+
+import { t as translate } from "i18n-js";
 
 export default function Store() {
   const user = getAuth().currentUser;
@@ -36,35 +42,27 @@ export default function Store() {
     const value = item.CatType == "Rare" ? 1000 : 300;
 
     const buy = () => {
-      if (coins < value) {
-        Alert.alert(
-          "Erro",
-          "Não é possível efetuar a compra, saldo insuficiente",
-          [{ text: "ok" }]
-        );
-      } else {
-        setCoins(coins - value);
-        cards.create(item);
-      }
+      setCoins(coins - value);
+      cards.create(item);
     };
 
     const handleBuy = () => {
       if (coins < value) {
-        Alert.alert(
-          "Erro",
-          "Não é possível efetuar a compra, saldo insuficiente",
-          [{ text: "ok" }]
-        );
+        Alert.alert(translate("fail"), translate("insufficientFunds"), [
+          { text: "ok" },
+        ]);
         return;
       }
       Alert.alert(
-        "Confirmar",
-        `Quer mesmo comprar a carta ${item.CatName} por $ ${value}`,
+        translate("confirm"),
+        `${translate("buyConfirm")} ${item.CatName}? ${translate(
+          "value"
+        )}: ${value} `,
         [
           {
-            text: "Não",
+            text: translate("no"),
           },
-          { text: "Sim", onPress: buy },
+          { text: translate("yes"), onPress: buy },
         ]
       );
     };

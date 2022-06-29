@@ -6,21 +6,27 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useContext } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import colors from "../../../../assets/colors";
+
 import Header from "../../../components/Header";
 import Footer from "../../../components/Footer";
 import AppButton from "../../../components/AppButton";
+import Info from "../../../components/Info";
+
 import i18n, { t as translate } from "i18n-js";
+
 import brFlag from "./br.png";
 import usFlag from "./us.png";
+
 import AppContext from "../../../contexts/AppContext";
 
-import useAuth from "../../../firebase/hooks/useAuth";
-import Info from "../../../components/Info";
 import { getAuth } from "firebase/auth";
+
 import useReference from "../../../firebase/hooks/useReference";
+import useAuth from "../../../firebase/hooks/useAuth";
 
 export default function Home({ navigation }) {
   const user = getAuth().currentUser;
@@ -42,7 +48,7 @@ export default function Home({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Header />
 
       <Info />
@@ -68,14 +74,11 @@ export default function Home({ navigation }) {
             />
           </View>
           <View style={styles.btn}>
-            <AppButton onPress={handleLogout} title="Logout" />
-          </View>
-          <View style={styles.btn}>
-            <AppButton onPress={addCoins} title="+ moedas" />
+            <AppButton onPress={addCoins} title={translate("addCoins")} />
           </View>
         </View>
 
-        {/* <View style={styles.langs}>
+        <View style={styles.langs}>
           <TouchableOpacity
             onPress={() => {
               app.setLang("pt-BR");
@@ -90,11 +93,11 @@ export default function Home({ navigation }) {
           >
             <Image style={styles.imgFlag} source={usFlag} />
           </TouchableOpacity>
-        </View> */}
+        </View>
       </ScrollView>
 
       <Footer />
-    </View>
+    </ScrollView>
   );
 }
 

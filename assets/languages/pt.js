@@ -12,17 +12,25 @@ export default pt = {
   // set info
   welcome: "Seja bem vindo",
   finishAcc: "Termine de configurar sua conta",
-  avatar: "Escolha um avatar",
   continue: "Continuar",
 
   //home
   play: "Jogar",
   collection: "Coleção",
   store: "Loja",
+  addCoins: "Adicionar moedas",
 
   //account
   accountInfo: "Informações da conta",
   profile: "Ver perfil",
+  setAvatar: "Mudar avatar",
+  setName: "Mudar nome",
+  setEmail: "Mudar email",
+  confirm: "Confirmar",
+  changeNameConfirm: "Quer mesmo mudar o nome?",
+  changeEmailConfirm: "Quer mesmo mudar o email?",
+  yes: "Sim",
+  no: "Não",
 
   //collection
   rare: "Raro",
@@ -30,6 +38,9 @@ export default pt = {
 
   //store
   buy: "Comprar",
+  buyConfirm: "Comprar carta",
+  value: "valor",
+  insufficientFunds: "Saldo insuficiente",
 
   //errors
   fail: "Erro",
