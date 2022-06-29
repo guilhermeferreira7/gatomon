@@ -19,7 +19,7 @@
 - [x] Criar/editar conta para diferentes usuários
 - [x] Listar informações das cards
 - [x] Editar usuário
-- [x] Adicionar todos os atributos dos usuários (cards, moedas, funções de controle dos atributos) 
+- [x] Adicionar todos os atributos dos usuários (cards, moedas, funções de controle dos atributos)
 - [x] Adicionar e mudar foto de perfil dos usuários
 - [x] Listar coleção
 - [x] Acesso a API
@@ -27,11 +27,20 @@
 - [x] Loja com alguns itens aleatórios da API
 
 ## Avaliação Final
- - [x] Correções AA2 (3)
- - [x] Recurso inédito (2)
- - [x] Conclusão outros requisitos (2)
- - [x] Tradução i18n (2)
- - [x] Apk (1)
+
+### Prints
+
+<img src="docs/print1.jpg" height="400"/>
+
+<img src="docs/print2.jpg" height="400"/>
+
+<img src="docs/print3.jpg" height="400"/>
+
+- [x] Correções AA2 (3)
+- [x] Recurso inédito (2)
+- [x] Conclusão outros requisitos (2)
+- [x] Tradução i18n (2)
+- [x] Apk (1)
 
 ## AA2
 
@@ -68,7 +77,6 @@ Pretendo criar algum jogo muito simples para conseguir coletar moedas para o apl
 - Até 13/06: Funcionalidades para comprar cards, listar cards comprados de cada usuário, funcionalidade de mostrar mais informações de cada card
 - Até 20/06: Funcionalidade de ranking
 - Até 27/06: Se possível, fazer a funcionalidade do jogo, se não, implementar outras funcionalidades e polir mais o que já está implementado.
-
 
 ## AA 1
 
