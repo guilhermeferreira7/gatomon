@@ -2,12 +2,10 @@ import {
   View,
   ScrollView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   Image,
 } from "react-native";
-import { useContext } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useContext, useState } from "react";
 
 import colors from "../../../../assets/colors";
 
@@ -23,25 +21,18 @@ import usFlag from "./us.png";
 
 import AppContext from "../../../contexts/AppContext";
 
-import { getAuth } from "firebase/auth";
+import getUserLogin from "../../../services/getUserLogin";
 
 import useReference from "../../../firebase/hooks/useReference";
-import useAuth from "../../../firebase/hooks/useAuth";
 
 export default function Home({ navigation }) {
-  const user = getAuth().currentUser;
+  const [user, setUser] = useState([]);
+  getUserLogin().then((res) => {
+    setUser(res);
+  });
   const [coins, setCoins] = useReference(user.uid + "/coins/");
-  const { logout } = useAuth();
   const app = useContext(AppContext);
   i18n.locale = app.lang;
-
-  const handleLogout = () => {
-    logout();
-    AsyncStorage.removeItem("login");
-    app.setLogged(false);
-    if (app.logged) return <Text>Saindo...</Text>;
-    navigation.navigate("Login");
-  };
 
   const addCoins = () => {
     setCoins(coins + 2000);
@@ -53,7 +44,7 @@ export default function Home({ navigation }) {
 
       <Info />
 
-      <ScrollView>
+      <View>
         <View style={styles.btnList}>
           <View style={styles.btn}>
             <AppButton
@@ -94,7 +85,7 @@ export default function Home({ navigation }) {
             <Image style={styles.imgFlag} source={usFlag} />
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      </View>
 
       <Footer />
     </ScrollView>
