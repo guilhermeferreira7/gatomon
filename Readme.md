@@ -2,6 +2,8 @@
 
 ### Meu maior orgulho criando esse projeto foi fazer validações e criação de usuário usando Firebase. Além disso também usei o i18N para tradução (pt-br para en-us e vice-versa) com botões dentro da aplicação. Outra coisa interessante que aprendi e usei no app foi conditional render do react para definir quais rotas usar e definir os componentes que vão ser mostrados dependendo se o usuário está logado ou não.
 
+### Em releases tem o apk para quem quiser baixar e brincar com ele. Não me preocupei com a segurança do backend então é recomendável usar algum email inválido, por exemplo email@example.com, o sistema irá funcionar normalmente. 
+
 ## Do que se trata o aplicativo
 
 - Foi desenvolvido para a disciplina de Programação de Dispositivos Móveis (TSI - UTFPR) usando React Native junto com Expo.
