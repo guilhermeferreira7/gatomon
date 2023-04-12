@@ -1,8 +1,10 @@
 # Gatomon
 
+## Meu maior orgulho criando esse projeto foi fazer validações e criação de usuário usando Firebase. Além disso também usei o i18N para tradução (pt-br para en-us e vice-versa) com botões dentro da aplicação. Outra coisa interessante que aprendi e usei no app foi conditional render do react para definir quais rotas usar e definir os componentes que vão ser mostrados dependendo se o usuário está logado ou não.
+
 ## Do que se trata o aplicativo
 
-- Está sendo desenvolvido para a disciplina de Programação de Dispositivos Móveis usando React Native junto com Expo.
+- Foi desenvolvido para a disciplina de Programação de Dispositivos Móveis (TSI - UTFPR) usando React Native junto com Expo.
 - Gatomon surgiu da ideia de ser um app para colecionar/gerenciar cartas. Os dados das cartas são de um jogo de colecionar gatinhos chamado [Neko Atsume](https://www.nekoatsume.com/en/). Os dados estão em uma [API](https://neko-atsume.emshea.com/) que foi criado pela [Emily Shea](https://emshea.com/).
 
 - Principais funcionalidades (nem todas foram implementas ainda):
