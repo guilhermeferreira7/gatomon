@@ -3,7 +3,8 @@
 ## Do que se trata o aplicativo
 
 - Está sendo desenvolvido para a disciplina de Programação de Dispositivos Móveis usando React Native junto com Expo.
-- Gatomon surgiu da ideia de ser um app para colecionar/gerenciar cartas. Os dados das cartas são de um jogo de colecionar gatinhos chamado Neko Atsume (https://www.nekoatsume.com/en/). Os dados estão em uma API (https://neko-atsume.emshea.com/) que foi criado pela Emily Shea (https://emshea.com/).
+- Gatomon surgiu da ideia de ser um app para colecionar/gerenciar cartas. Os dados das cartas são de um jogo de colecionar gatinhos chamado [Neko Atsume](https://www.nekoatsume.com/en/). Os dados estão em uma [API](https://neko-atsume.emshea.com/) que foi criado pela [Emily Shea](https://emshea.com/).
+
 - Principais funcionalidades (nem todas foram implementas ainda):
   - Criar usuários e salvar os dados no Firebase
   - Validação de login
