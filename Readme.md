@@ -1,6 +1,6 @@
 # Gatomon
 
-## Meu maior orgulho criando esse projeto foi fazer validações e criação de usuário usando Firebase. Além disso também usei o i18N para tradução (pt-br para en-us e vice-versa) com botões dentro da aplicação. Outra coisa interessante que aprendi e usei no app foi conditional render do react para definir quais rotas usar e definir os componentes que vão ser mostrados dependendo se o usuário está logado ou não.
+### Meu maior orgulho criando esse projeto foi fazer validações e criação de usuário usando Firebase. Além disso também usei o i18N para tradução (pt-br para en-us e vice-versa) com botões dentro da aplicação. Outra coisa interessante que aprendi e usei no app foi conditional render do react para definir quais rotas usar e definir os componentes que vão ser mostrados dependendo se o usuário está logado ou não.
 
 ## Do que se trata o aplicativo
 
