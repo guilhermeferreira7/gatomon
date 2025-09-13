@@ -1,13 +1,9 @@
 # Gatomon
 
-### Meu maior orgulho criando esse projeto foi fazer validações e criação de usuário usando Firebase. Além disso também usei o i18N para tradução (pt-br para en-us e vice-versa) com botões dentro da aplicação. Outra coisa interessante que aprendi e usei no app foi conditional render do react para definir quais rotas usar e definir os componentes que vão ser mostrados dependendo se o usuário está logado ou não.
-
-### Em releases tem o apk para quem quiser baixar e brincar com ele. Não me preocupei com a segurança do backend então é recomendável usar algum email inválido, por exemplo email@example.com, o sistema irá funcionar normalmente. 
-
 ## Do que se trata o aplicativo
 
 - Foi desenvolvido para a disciplina de Programação de Dispositivos Móveis (TSI - UTFPR) usando React Native junto com Expo.
-- Gatomon surgiu da ideia de ser um app para colecionar/gerenciar cartas. Os dados das cartas são de um jogo de colecionar gatinhos chamado [Neko Atsume](https://www.nekoatsume.com/en/). Os dados estão em uma [API](https://neko-atsume.emshea.com/) que foi criado pela [Emily Shea](https://emshea.com/).
+- Gatomon surgiu da ideia de ser um app para colecionar/gerenciar cartas. Os dados das cartas são de um jogo de colecionar gatinhos chamado [Neko Atsume](https://www.nekoatsume.com/en/). Os dados são de uma [API](https://neko-atsume.emshea.com/) criado pela [Emily Shea](https://emshea.com/).
 
 - Principais funcionalidades (nem todas foram implementas ainda):
   - Criar usuários e salvar os dados no Firebase
@@ -31,8 +27,6 @@
 - [x] Forma de adquirir moeda virtual
 - [x] Loja com alguns itens aleatórios da API
 
-## Avaliação Final
-
 ### Prints
 
 <img src="docs/print1.jpg" height="400"/>
@@ -47,43 +41,9 @@
 - [x] Tradução i18n (2)
 - [x] Apk (1)
 
-## AA2
-
-### Correções da AA1:
-
-AA1 já estava ok
-
 ### Persistência de Dados:
 
 Firebase nas paginas de Login e Criar conta. AsyncStorage para armazenar os dados de login e são excluidos quando o usuário faz logout.
-
-### Alert, Modal e ActionSheet:
-
-Alert na pagina de login e criar conta para informar que alguma coisa está incorreta. Alert também na pagina de comprar cards.
-
-### Backlog:
-
-- As páginas de login e criar conta agora funcionam corretamente.
-- É possível criar uma conta no firebase e só é possível efetuar login se já existir uma conta.
-- A tela da loja mostra somente algumas cards aleatóriamente e não todas.
-- Na página do perfil de usuário (que é acessado quando clica no icone no canto superior direito), mostra um botão para logout.
-
-### Acesso à API Remota:
-
-Os cards são gerados a partir de uma api https://neko-atsume.emshea.com
-
-### Recurso inédito:
-
-Pretendo criar algum jogo muito simples para conseguir coletar moedas para o aplicativo fazer mais sentido.
-
-### Cronograma:
-
-- Até 06/06: Terminar as funcionalidades para criar e editar usuários
-- Até 13/06: Funcionalidades para comprar cards, listar cards comprados de cada usuário, funcionalidade de mostrar mais informações de cada card
-- Até 20/06: Funcionalidade de ranking
-- Até 27/06: Se possível, fazer a funcionalidade do jogo, se não, implementar outras funcionalidades e polir mais o que já está implementado.
-
-## AA 1
 
 ### Protótipos (ideia inicial)
 
